@@ -23,7 +23,7 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/login",
+        "http://localhost:3030/users/login",
         {
           email,
           password,
@@ -34,17 +34,17 @@ function Login() {
           },
         }
       );
-
+        console.log("res",response.data)
       if (response.status === 200) {
         swal({
           title: "Login successful",
           icon: "success",
         }).then(() => {
           window.localStorage.setItem("token", response.data.token);
-          if (response.data.userType === "superAdmin") {
-            window.location.href = "/dashboard";
-          } else if (response.data.userType === "user") {
-            window.location.href = "/shop";
+          if (response.data.role === "admin") {
+            window.location.href = "/decoration";
+          } else if (response.data.role === "user") {
+            window.location.href = "/";
           } else {
             window.location.href = "/";
           }

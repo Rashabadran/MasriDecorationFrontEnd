@@ -11,7 +11,9 @@ import b44 from './images/b44.jpg';
 import balloon111 from './images/balloon111.jpg';
 import balloon222 from './images/balloon222.jpg';
 import balloon333 from './images/balloon333.jpg'
-import balloon3333 from './images/ballooon33333.jpg'
+import balloon3333 from './images/ballooon33333.jpg';
+import { Link,useParams } from 'react-router-dom';
+
 function Home() {
   const imagesss = [
     { src: balloon111, alt: 'Image 1' },
@@ -109,7 +111,7 @@ function Home() {
             designs. Discover colorful banners, balloons, and streamers to
             create an eye-catching backdrop for the festivities.
           </h3>
-          <button className="daily-button">Shop now!</button>
+         <Link to={`/balloons`}><button className="daily-button">Shop now!</button></Link>
         </div>
         <div className="carousel">
           <ul className="carousel__list">
@@ -159,7 +161,7 @@ function Home() {
             and sophisticated to fun and playful, we have the creativity and
             expertise to exceed your expectations.
           </h3>
-          <button className="daily-button">See more!</button>
+          <Link to={`/decoration`}><button className="daily-button">See more!</button></Link>
         </div>
       </div>
 

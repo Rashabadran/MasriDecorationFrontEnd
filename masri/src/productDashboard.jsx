@@ -11,7 +11,7 @@ function Category() {
   const [images, setImages] = useState([]);
   const [productByCat, setProductbyCat] = useState("");
   const [isAllProductsSelected, setIsAllProductsSelected] = useState(true);
-   
+  const [colors, setColors] = useState([]);
 
   const getcategories = async () => {
     try {
@@ -39,7 +39,13 @@ function Category() {
     } catch (error) {
       console.error(error);
     }
+    console.log("aaaaaaaaaa",products.map((item)=>item.color))
   }
+
+  
+ 
+ 
+
 
   useEffect(() => {
     getcategories();
@@ -99,10 +105,9 @@ function Category() {
                     </div>
                   )}
                 </div>
+               
               </div>
-              <Link to={`/singleproduct/${item._id}`}>
-              <button className="card-button">More info</button>
-              </Link>
+              
 
             </div>
           );

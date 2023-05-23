@@ -1,0 +1,414 @@
+.carousel {
+    position: relative;
+    width: 705px;
+    height: 800px;
+
+    margin-top: 100px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #8be2ff;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-btn:first-child {
+    left: 10px;
+}
+
+.carousel-btn:last-child {
+    right: 10px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.both {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+}
+
+.second {
+    background-color: #f8f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 100%);
+    border: 1px solid #f8f8ff;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    margin-right: 14px;
+    width: 482px;
+}
+
+.imagesProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.carouselSlide {
+    height: 40vw;
+}
+
+.imageProductResizeP {
+    height: 34vw;
+    width: 30vw;
+    margin-top: 15%;
+}
+
+.allProducts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    min-height: 100vh;
+}
+
+.imageProductResize {
+    border-radius: 15px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    margin: 0.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.productImages {
+    height: 100px !important;
+}
+
+.title {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 48px;
+    font-weight: bolder;
+}
+
+.price {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+}
+
+.size {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+}
+
+.sizeDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.colorDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.borderr {
+    margin-top: 19px;
+}
+
+.colorDetailsName {
+    border-radius: 55px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 14px;
+    color: black;
+    background-color: white;
+}
+
+.colorDetailsName:active,
+.colorDetailsName:focus,
+.colorDetailsName.selected {
+    background-color: black;
+    color: white;
+}
+
+.sizeDetailsName {
+    border-radius: 55px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 14px;
+    color: black;
+}
+
+.sizeDetailsName:active,
+.sizeDetailsName:focus,
+.sizeDetailsName.selected {
+    background-color: black;
+    color: white;
+}
+
+.quantity-button {
+    display: flex;
+}
+
+.quantity-button__decrease,
+.quantity-button__increase {
+    background-color: white;
+    border: none;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.quantity-button__quantity {
+    margin: 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.quantityText {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    margin-top: 0px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+.description {
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.descriptionTitle {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+.cartButton {
+    margin-top: 40px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+@media only screen and (max-width: 645px) {
+    .both {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+                .carousel-image {
+                    width: 75%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+
+    .carousel {
+            position: relative;
+            width: 88%;
+            height:50%;
+            margin-top: 70px;
+            margin-left: 4%;
+        }
+        .second {
+            background-color: #f8f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgb(0 0 0);
+            border: 1px solid #f8f8ff;
+            margin-top: 0px;
+            margin-bottom: 40px;
+            width: 80%;
+            margin-left: 4%;
+           
+        }
+    .title {
+        font-size: 24px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .size {
+        font-size: 16px;
+    }
+
+    .sizeDetails {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .colorDetails {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .quantityText {
+        font-size: 16px;
+    }
+
+    .descriptionTitle {
+        font-size: 16px;
+    }
+
+    .cartButton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media only screen and (min-width:645px) and (max-width: 1000px) {
+   
+    .both {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+
+    .carousel-image {
+        width: 75%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .carousel {
+        position: relative;
+        width: 88%;
+        height: 50%;
+        margin-top: 70px;
+    }
+
+    .second {
+        background-color: #f8f8ff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 100%);
+        border: 1px solid #f8f8ff;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-right: 2px;
+        margin-left: 13px;
+        width: 89%;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .size {
+        font-size: 16px;
+    }
+
+    .sizeDetails {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .colorDetails {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .quantityText {
+        font-size: 16px;
+    }
+
+    .descriptionTitle {
+        font-size: 16px;
+    }
+
+    .cartButton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media only screen and (min-width:1000px) and (max-width: 1500px) {
+
+    .both {
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        margin-top: 150px;
+    }
+
+    .carousel-image {
+        width: 75%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .carousel {
+        position: relative;
+        width: 88%;
+        height: 50%;
+        margin-top: 70px;
+    }
+
+    .second {
+        background-color: #f8f8ff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 100%);
+        border: 1px solid #f8f8ff;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-right: 2px;
+        margin-left: 13px;
+        width: 50%;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .size {
+        font-size: 16px;
+    }
+
+    .sizeDetails {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .colorDetails {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .quantityText {
+        font-size: 16px;
+    }
+
+    .descriptionTitle {
+        font-size: 16px;
+    }
+
+    .cartButton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}

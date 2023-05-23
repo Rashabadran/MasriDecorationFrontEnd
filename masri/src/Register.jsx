@@ -4,6 +4,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import NavBar from "./NavBar";
 import ballooon from './images/balloons.png';
+
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ function Register() {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -20,97 +22,127 @@ function Register() {
     setPassword(event.target.value);
   };
 
+  const checkEmailExists = async (email) => {
+    try {
+      const response = await axios.get("http://localhost:3030/users/all", {
+        params: {
+          email: email,
+        },
+      });
+      console.log("aa",response.data)
+      return response.data.exists;
+    } catch (error) {
+      console.error("Error checking email existence:", error);
+      throw new Error("An error occurred while checking email existence");
+    }
+    
+  };
+
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/user/signup", {
-        name,
-        email,
-        password,
-        userType: "user",
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status === 200) {
-        console.log("register ok")
-        console.log(response)
-        swal({
-          title: "Register successful",
-          icon: "success",
-        }).then(() => {
-          window.localStorage.setItem("token", response.data.token);
-          window.location.href = "/login";
-        });
-      } else {
+      const emailExists = await checkEmailExists(email);
+      console.log("emaill",email)
+      if (emailExists) {
         swal({
           title: "Register failed",
-          text: response.data.message,
+          text: "Email already exists",
           icon: "error",
         });
+      } else {
+        const response = await axios.post(
+          "http://localhost:3030/users/",
+          {
+            name,
+            email,
+            password,
+            role: "user",
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          console.log("register ok");
+          console.log(response);
+          swal({
+            title: "Register successful",
+            icon: "success",
+          }).then(() => {
+            window.localStorage.setItem("token", response.data.token);
+            window.location.href = "/login";
+          });
+        } else {
+          swal({
+            title: "Register failed",
+            text: response.data.message,
+            icon: "error",
+          });
+        }
       }
     } catch (error) {
-      
+      swal({
+        title: "Register failed",
+        text: error.message,
+        icon: "error",
+      });
     }
   };
+
   return (
     <div className="allRegister">
-     
-     <div className="allLog">
-  <div className="image1Log">
-    <img src={ballooon} alt="balloons"/>
-  </div>
-    <div className="register-container">
-
-      <div className="border-reg">
-      <h1 className="register-h1">Register Page</h1>
-      <form className="form-register" onSubmit={handleRegisterSubmit}>
-        <label htmlFor="username" className="label-register">
-          Username:
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          className="input-register"
-          onChange={handleNameChange}
-        />
-        <label htmlFor="email" className="label-register">
-          Email:
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          className="input-register"
-          onChange={handleEmailChange}
-        />
-        <label htmlFor="password" className="label-register">
-          Password:
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          className="input-register"
-          onChange={handlePasswordChange}
-
-        />
-        
-        <button type="submit" className="button-register">
-          Register
-        </button>
-      </form>
+      <div className="allLog">
+        <div className="image1Log">
+          <img src={ballooon} alt="balloons" />
+        </div>
+        <div className="register-container">
+          <div className="border-reg">
+            <h1 className="register-h1">Register Page</h1>
+            <form className="form-register" onSubmit={handleRegisterSubmit}>
+              <label htmlFor="username" className="label-register">
+                Username:
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="input-register"
+                onChange={handleNameChange}
+              />
+              <label htmlFor="email" className="label-register">
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="input-register"
+                onChange={handleEmailChange}
+              />
+              <label htmlFor="password" className="label-register">
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                className="input-register"
+                onChange={handlePasswordChange}
+              />
+              <button type="submit" className="button-register">
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="image1Log">
+          <img src={ballooon} alt="balloons" />
+        </div>
       </div>
-    </div>
-    <div className="image1Log">
-    <img src={ballooon} alt="balloons"/>
-  </div>
-    </div>
-    
     </div>
   );
 }
