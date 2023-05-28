@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import baskett from './images/xx.png'
 import trash from './images/trash2.png'
 import pencil from './images/edit.png'
-
+import plus from './images/plus2.png'
 
 function Category() {
   const [category, setCategory] = useState([]);
@@ -20,7 +20,6 @@ function Category() {
   const [productByCat, setProductbyCat] = useState("");
   const [isAllProductsSelected, setIsAllProductsSelected] = useState(true);
   const [colors, setColors] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [addStudent,setAddStudent]=useState(false);
@@ -40,7 +39,8 @@ function Category() {
   const [threeimages, setthreeimages] = useState([]);
   const [selectedCategory,setSelectedCategory]=useState("");
   const [Newsale, setNewsale] = useState(0);
-  const [Products_id, setProducts_id] = useState(null)
+  const [Products_id, setProducts_id] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   const getcategories = async () => {
     try {
@@ -137,7 +137,7 @@ function Category() {
 
   try {
     
-    const response = await axios.post("http://localhost:3030/product", addTitle);
+    await axios.post("http://localhost:3030/product", addTitle);
     // Handle success
     toast.success('Added successfully!', {
       position: toast.POSITION.TOP_RIGHT,
@@ -282,12 +282,20 @@ const deleteProduct = async (id) => {
     ? products
     : products.filter((item) => item.category._id === selectedCategoryId);
 
+  const openFormPopup = () => {
+    setShowForm(true);
+  };
+
+  const closeFormPopup = () => {
+    setShowForm(false);
+  };
+
   return (
     
     <div className="category-container">
     <ToastContainer />
     <div className="flexCategory">
-    <button class="c-button b-all" onClick={handleAddStudent} > Add
+    <button class="c-button b-all" onClick={handleAddStudent} > <img className="pluss"src={plus}/>
   
 </button>
 
@@ -315,22 +323,29 @@ const deleteProduct = async (id) => {
         ))}
       </div>
       </div>
-      <div className="allProductsBalloons">
+      <div className="buttonwithProduct">
+      <div className="addProd">
+      <button class=" b-all productAdd" onClick={openFormPopup} > <img className="pluss"src={plus}/>Add
+  
+</button>
+           
+      </div>
+      <div className="allProductsBalloons2">
         {filteredCategory.map((item, index) => {
           return (
-            <div className="card" key={item._id}>
+            <div className="card2" key={item._id}>
               <img
-                className="card-details"
+                className="card-details2"
                 src={images && images[index]?.url}
                 alt={item.title}
               />
-              <div className="priceandTitle">
-                <div className="titlee">{item.title}</div>
-                <div className="price">
+              <div className="priceandTitle2">
+                <div className="titlee2">{item.title}</div>
+                <div className="price2">
                   {item.price === item.priceAfterDiscount ? (
                     <h3>{item.price}$</h3>
                   ) : (
-                    <div className="price">
+                    <div className="price2">
                       <h3>{item.priceAfterDiscount}$</h3>
                       <h4>{item.price}$</h4>
                     </div>
@@ -347,6 +362,8 @@ const deleteProduct = async (id) => {
           );
         })}
       </div>
+
+      </div>
        <div className="allll">
           {addStudent &&(
           <form className='firstt-formm' id='firstt-formm' onSubmit={addCategory} >
@@ -361,12 +378,84 @@ const deleteProduct = async (id) => {
           <br />
         </form>)}
         </div>
+        
+
+              {showForm && (
+        <div className="res-popup">
+          <div className="res-popup-content">
+          
+            <h1>Add Products </h1>
+
+        <label ><b>Title</b></label>
+        <input className="textAdd" type="text" placeholder="Enter the product name" name="title" required onChange={e => setproductTitle(e.target.value)} />
+        <br />
+        
+
+        <label ><b>Price</b></label>
+        <input className="textAdd" type="text" placeholder="Enter price" name="psw" required onChange={e => setPrice(e.target.value)} />
+        <br />
+
+
+         <label className="textform" >Sale</label><br />
+        <input className="textAdd" type="text" value={discount_per} onChange={e => setSale(e.target.value)} />
+        <br />
+        
+
+        <label className="textform" >color</label><br />
+        <input className="textAdd" type="text" value={color} onChange={handlecolor} />
+        <br />
+
+        <label className="textform" >Description</label><br />
+        <input className="textAdd" type="text" onChange={e => setDescription(e.target.value)} />
+        <br />
+
+         <label>Select an option:</label>
+      <select className="textAdd" value={category._id} onChange={(e) => setSelectedCategory(e.target.value)} >
+      
+        <option></option>
+        {Array.isArray(category) && category.map((item) => (
+          
+        <option value={item._id}>{item.title}</option>))}
+        
+      </select>
+      
+          
+        <div>
+          <label >Choose Images:</label>
+          <br />
+          <input className="textAdd" type="file" id="images" name="file" onChange={handleProductImage} multiple />
+          <br />
+          {threeimages.map((image, index) => (
+            <img key={index} src={image} alt={`Image ${index}`} />
+          ))}
+        </div>
+
+            
+
+        <button type="submit" className="b-all addb" onClick={() => { addProduct(); }}>Submit</button>
+        <button type="close" className="b-all addb" onClick={closeFormPopup}>Close</button>
+          </div>
+        </div>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <div className="form-popup" id="editproductform">
 
         <h1>Edit  Products </h1>
-        {/* {productsdata&&productsdata.map((item, index) => (
-    <> */}
+       
         <label ><b>Title</b></label>
         <input type="text" placeholder={productsdata && productsdata.title} name="title" required onChange={(e) => { setedittitle(e.target.value) }} />
         <br />
