@@ -1,0 +1,65 @@
+.c-button{
+        width: 150px;
+        height: 48px;
+        margin-top: 17px;
+        margin-left: 768px;
+           
+}
+.b-all{
+  font-size: 20px;
+    background-color: #8be2ff;
+    padding: 15px;
+    border-radius: 26px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: 2px solid #8be2ff;
+    box-shadow: 3px 3px grey;
+}
+.firstt-formm {
+    margin-top: -216px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.356);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    width: 30%;
+    z-index: 10;
+    transform: translate(550px,-285%);
+
+
+}
+
+  .alignForm {
+      align-self: self-start;
+      margin-left: 50px;
+      color: rgba(255, 255, 255, 0.962) !important;
+  }
+  .background-overlay {
+      display: block;
+  }
+  .basketImage{
+    padding-left: 12px;
+  }
+  .trash{
+        width: 29px;
+            height: 49px;
+  }
+  .flexCategory{
+        display: flex;
+          flex-direction: row-reverse;
+          align-items: baseline;
+          justify-content: flex-end;
+          /* margin-left: 768px; */
+  }
+  .pencil{
+    height:51px;
+  }
+  .flexTrash{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+  }

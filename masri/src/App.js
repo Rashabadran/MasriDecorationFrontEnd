@@ -9,6 +9,7 @@ import SingleBalloons from './singleBalloons';
 import Layout from './layout';
 import Decoration from './Decoration';
 import ProductDashboard from './productDashboard';
+import DecorationDashboard from './DecorationDashboard';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
        <Route path="/singleproduct/:productId" element={<SingleBalloons/>}/>
        <Route path='/productDashboard' element={<ProductDashboard/>}/>
        <Route path="/decoration" element={<Decoration/>}/>
+       <Route path="/decorationDashboard" element={<DecorationDashboard/>}/>
      
 
        </Route>

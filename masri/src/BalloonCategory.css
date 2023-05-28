@@ -11,7 +11,7 @@
 
 .category-button {
     height: 40px;
-    width: 100px;
+    width: 161px;
     text-align: center;
     background-color: white;
     border: none;
@@ -52,8 +52,8 @@
 
 .card-details {
     color: black;
-    width: 121px;
-    height: 220px;
+    width: 159px;
+    height: 195px;
 }
 
 .card-button {
@@ -95,10 +95,11 @@
 
 .allProductsBalloons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25%, 3fr));
+    grid-template-columns: repeat(auto-fit, minmax(25%, 4fr));
     justify-content: center;
-    align-items: baseline;
+    /* align-items: baseline; */
     justify-items: center;
+        margin-bottom: 50px;
 }
 
 /*Price*/
