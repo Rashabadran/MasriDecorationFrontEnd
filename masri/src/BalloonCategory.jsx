@@ -22,14 +22,7 @@ function Category() {
     }
   }
 
-  const getProductByCategory = async () => {
-    try {
-      const response = await axios.get("http://localhost:3030//productbyCategory/:category_id");
-      setProductbyCat(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+ 
 
   const getallitems = async () => {
     try {

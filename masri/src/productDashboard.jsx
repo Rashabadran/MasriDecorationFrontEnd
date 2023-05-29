@@ -41,6 +41,7 @@ function Category() {
   const [Newsale, setNewsale] = useState(0);
   const [Products_id, setProducts_id] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const getcategories = async () => {
     try {
@@ -73,6 +74,7 @@ function Category() {
     seteditDescription(response.data.description)
     seteditPrice(response.data.price)
     setSale(response.data.discount_per)
+    openEditFormPopup();
 
   }
 
@@ -113,8 +115,16 @@ function Category() {
     
     await axios.post("http://localhost:3030/allballoons/product/", formData)
     
-     
-    toast.success('Product added successfully!', { position: toast.POSITION.TOP_RIGHT });
+     toast.success('Added successfully!', {
+      position: toast.POSITION.TOP_RIGHT,
+       
+       onClose: () => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000); 
+      },
+    })
+   
   }
   catch (error) {
     // Handle the error appropriately, such as displaying an error message
@@ -213,10 +223,6 @@ const deleteProduct = async (id) => {
  }
 
 
-  const CloseAddCategory = () => {
-    document.getElementById("firstt-formm").style.display = "none";
-  };
- 
  function handleProductImage(e) {
     const selectedFiles = e.target.files;
     const newImages = [];
@@ -257,9 +263,15 @@ const deleteProduct = async (id) => {
 
     const response = await axios.put(`http://localhost:3030/allballoons/productUpdate/${Products_id}`, editdata);
 
-     console.log("response", response.data);
-    toast.success('Product updated  successfully!', { position: toast.POSITION.TOP_RIGHT });
-    // console.log("success the product is updated  product amira");
+    toast.success('Updated successfully!', {
+      position: toast.POSITION.TOP_RIGHT,
+       
+       onClose: () => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000); 
+      },
+    });
   };
 
   
@@ -288,6 +300,15 @@ const deleteProduct = async (id) => {
 
   const closeFormPopup = () => {
     setShowForm(false);
+  };
+
+
+   const openEditFormPopup = () => {
+    setShowEditForm(true);
+  };
+
+  const closeEditFormPopup = () => {
+    setShowEditForm(false);
   };
 
   return (
@@ -440,101 +461,55 @@ const deleteProduct = async (id) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-      <div className="form-popup" id="editproductform">
-
-        <h1>Edit  Products </h1>
+        {showEditForm && (
+        <div className="res-popup">
+          <div className="res-popup-content">
+          
+           <h1>Edit  Products </h1>
        
         <label ><b>Title</b></label>
-        <input type="text" placeholder={productsdata && productsdata.title} name="title" required onChange={(e) => { setedittitle(e.target.value) }} />
+        <input className="textAdd" type="text" placeholder={productsdata && productsdata.title} name="title" required onChange={(e) => { setedittitle(e.target.value) }} />
         <br />
 
         <label ><b>Price</b></label>
-        <input type="text" placeholder={productsdata && productsdata.price} name="psw" required onChange={(e) => { seteditPrice(e.target.value) }} />
+        <input className="textAdd" type="text" placeholder={productsdata && productsdata.price} name="psw" required onChange={(e) => { seteditPrice(e.target.value) }} />
         <br />
 
 
         <label className="textform" ><b>color</b></label>
-        <input type="text" placeholder={productsdata && productsdata.color} onChange={handleeditcolor} />
+        <input className="textAdd" type="text" placeholder={productsdata && productsdata.color} onChange={handleeditcolor} />
         <br />
 
         <label className="textform" ><b>Description</b></label>
-        <input type="text" placeholder={productsdata && productsdata.description} onChange={e => seteditDescription(e.target.value)} />
+        <input className="textAdd" type="text" placeholder={productsdata && productsdata.description} onChange={e => seteditDescription(e.target.value)} />
         <br />
         
-
-
-          <button type="submit" className="btn" onClick={() => { editProduct();  }}>Submit</button> 
-        {/*<button type="button" className="btn cancel" onClick={() => { CloseEditProducts() }}>Close</button> */}
-
-      </div>
-
-
-      <div className="form-popup" id="addproductform">
-
-        <h1>Add Products </h1>
-
-        <label ><b>Title</b></label>
-        <input type="text" placeholder="Enter the product name" name="title" required onChange={e => setproductTitle(e.target.value)} />
-        <br />
-        
-
-        <label ><b>Price</b></label>
-        <input type="text" placeholder="Enter price" name="psw" required onChange={e => setPrice(e.target.value)} />
-        <br />
-
-
-         <label className="textform" >Sale</label><br />
-        <input type="text" value={discount_per} onChange={e => setSale(e.target.value)} />
-        <br />
-        
-
-        <label className="textform" >color</label><br />
-        <input type="text" value={color} onChange={handlecolor} />
-        <br />
-
-        <label className="textform" >Description</label><br />
-        <input type="text" onChange={e => setDescription(e.target.value)} />
-        <br />
-
-         <label>Select an option:</label>
-      <select value={category._id} onChange={(e) => setSelectedCategory(e.target.value)} >
-      
-        <option></option>
-        {Array.isArray(category) && category.map((item) => (
-          
-        <option value={item._id}>{item.title}</option>))}
-        
-      </select>
-      
-
-        <div>
-          <label >Choose Images:</label>
-          <br />
-          <input type="file" id="images" name="file" onChange={handleProductImage} multiple />
-          <br />
-          {threeimages.map((image, index) => (
-            <img key={index} src={image} alt={`Image ${index}`} />
-          ))}
-        </div>
-
             
 
-        <button type="submit" className="btn" onClick={() => { addProduct(); }}>Submit</button>
-        {/* <button type="button" className="btn cancel" onClick={() => { CloseAddProducts() }}>Close</button> */}
+        <button type="submit" className="b-all addb" onClick={() => { editProduct(); }}>Update</button>
+        <button type="close" className="b-all addb" onClick={closeEditFormPopup}>Close</button>
+          </div>
+        </div>
+      )}
 
-      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+      
 
 
        

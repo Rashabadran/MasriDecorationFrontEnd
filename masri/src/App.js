@@ -10,7 +10,7 @@ import Layout from './layout';
 import Decoration from './Decoration';
 import ProductDashboard from './productDashboard';
 import DecorationDashboard from './DecorationDashboard';
-
+import Order from './Order';
 function App() {
   return (
    <BrowserRouter>
@@ -24,7 +24,7 @@ function App() {
        <Route path='/productDashboard' element={<ProductDashboard/>}/>
        <Route path="/decoration" element={<Decoration/>}/>
        <Route path="/decorationDashboard" element={<DecorationDashboard/>}/>
-     
+      <Route path="/order" element={<Order/>}/>
 
        </Route>
     </Routes>

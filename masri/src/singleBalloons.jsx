@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './singleBalloons.css';
 import axios from 'axios';
-import { Link,useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 const Carousel = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -33,13 +34,13 @@ const Carousel = ({ images }) => {
 };
 
 const SingleBalloons = () => {
-  
   const [quantity, setQuantity] = useState(1);
   const [valueQuantity, setValueQuantity] = useState();
   const [data, setData] = useState({});
   const [colors, setColors] = useState([]);
   const [images, setImages] = useState([]);
-  const {productId} = useParams();
+  const { productId } = useParams();
+  const [valueColors, setValueColors] = useState([]);
 
   useEffect(() => {
     loadSingleProduct();
@@ -53,20 +54,53 @@ const SingleBalloons = () => {
     setImages(data.image || []);
   }, [data.image]);
 
+  function handleColorClick(event) {
+    setValueColors(event.target.value);
+  }
+
+  const saveToLocalStorage = () => {
+    // Get the existing cart items from local storage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Check if the product is already in the cart
+    const existingCartItemIndex = cartItems.findIndex(
+      (item) => item._id === data._id
+    );
+
+    if (existingCartItemIndex !== -1) {
+      // If the product is already in the cart, increment its quantity
+      cartItems[existingCartItemIndex].quantity += quantity;
+    } else {
+      // If the product is not in the cart, add it as a new item
+      const firstImage = images[0]?.url;
+      cartItems.push({
+        _id: data._id,
+        title: data.title,
+        price: data.price,
+        priceAfterDiscount: data.priceAfterDiscount,
+        color: valueColors,
+        quantity: quantity,
+        image: firstImage, // Add the first image URL to the cart item
+      });
+    }
+
+    // Save the updated cart items to local storage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  };
+
   const loadSingleProduct = async () => {
     try {
       const res = await axios.get(
         `http://localhost:3030/allballoons/productbyID/${productId}`
       );
       setData(res.data);
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
-   const carouselImages = images.map((image) => image?.url);
 
-
+  const carouselImages = images.map((image) => image?.url);
 
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -104,6 +138,7 @@ const SingleBalloons = () => {
                   className="colorDetailsName"
                   key={index}
                   value={color}
+                  onClick={handleColorClick}
                 >
                   {color}
                 </button>
@@ -134,8 +169,11 @@ const SingleBalloons = () => {
               </ul>
             </div>
             <div>
-              {/* <Link to={`/Order`}> <button className='cartButton' onClick={saveToLocalStorage}> Add to cart</button></Link> */}
-            <button className='cartButton'> Add to cart</button>
+              <Link to={`/Order`}>
+                <button className="cartButton" onClick={saveToLocalStorage}>
+                  Add to cart
+                </button>
+              </Link>
             </div>
           </div>
         </div>

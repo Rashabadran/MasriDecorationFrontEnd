@@ -66,13 +66,13 @@ function NavBar() {
           </a>
         </li>
         <li className={nav ? 'maintain' : 'normal'}>
-          <a href="/shop" className={location.pathname === '/shop' ? 'active' : ''}>
+          <a href="/balloons" className={location.pathname === '/balloons' ? 'active' : ''}>
             Shop
           </a>
         </li>
         <li className={nav ? 'maintain' : 'normal'}>
-          <a href="/aboutUs" className={location.pathname === '/aboutUs' ? 'active' : ''}>
-            About us
+          <a href="/decoration" className={location.pathname === '/decoration' ? 'active' : ''}>
+            Decoration
           </a>
         </li>
         {/* <li className={nav ? 'maintain' : 'normal'}>
