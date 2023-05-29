@@ -12,6 +12,7 @@ import ProductDashboard from './productDashboard';
 import DecorationDashboard from './DecorationDashboard';
 import Order from './Order';
 import ContactUs from './ContactUs';
+import Orderdashbord from './OrdersDashboard';
 function App() {
   return (
    <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
        <Route path="/decorationDashboard" element={<DecorationDashboard/>}/>
       <Route path="/order" element={<Order/>}/>
       <Route path="/contactUs" element={<ContactUs/>}/>
+      <Route path="/OrderDashboard" element={<Orderdashbord/>}/>
 
        </Route>
     </Routes>

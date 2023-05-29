@@ -15,7 +15,7 @@ function NavBar() {
   const [menu, setMenu] = useState("nav-links");
   const [icon, setIcon] = useState("bx bx-menu");
   const location = useLocation();
-
+  const token=sessionStorage.getItem("token")
   useEffect(() => {
     setShow(false);
     setMenu("nav-links");
@@ -51,27 +51,37 @@ function NavBar() {
  
   };
 
+  const handleSignout=()=>{
+    sessionStorage.clear();
+        navigate("/login");
+  }
+
   window.addEventListener("scroll", navbar);
 
   return (
-    <header className={nav ? 'not' : 'sticky-header'}>
+    <header className={nav ? "not" : "sticky-header"}>
       <a href="/" className="logo">
-         <img src={logo} alt="Masri logo" className="header-logo" /> 
-        
+        <img src={logo} alt="Masri logo" className="header-logo" />
       </a>
       <ul className={menu}>
-        <li className={nav ? 'maintain' : 'normal'}>
-          <a href="/" className={location.pathname === '/' ? 'active' : ''}>
+        <li className={nav ? "maintain" : "normal"}>
+          <a href="/" className={location.pathname === "/" ? "active" : ""}>
             Home
           </a>
         </li>
-        <li className={nav ? 'maintain' : 'normal'}>
-          <a href="/balloons" className={location.pathname === '/balloons' ? 'active' : ''}>
+        <li className={nav ? "maintain" : "normal"}>
+          <a
+            href="/balloons"
+            className={location.pathname === "/balloons" ? "active" : ""}
+          >
             Shop
           </a>
         </li>
-        <li className={nav ? 'maintain' : 'normal'}>
-          <a href="/decoration" className={location.pathname === '/decoration' ? 'active' : ''}>
+        <li className={nav ? "maintain" : "normal"}>
+          <a
+            href="/decoration"
+            className={location.pathname === "/decoration" ? "active" : ""}
+          >
             Decoration
           </a>
         </li>
@@ -80,29 +90,43 @@ function NavBar() {
             Discounts
           </a>
         </li> */}
-        <li className={nav ? 'maintain' : 'normal'}>
-          <a href="/contactus" className={location.pathname === '/contactus' ? 'active' : ''}>
+        <li className={nav ? "maintain" : "normal"}>
+          <a
+            href="/contactus"
+            className={location.pathname === "/contactus" ? "active" : ""}
+          >
             Contact us
           </a>
         </li>
         <li className="willhide">
-          <p onClick={handleSignClick} className={location.pathname === '/sign-in' ? 'active' : ''}>
-            
-          </p>
+          <p
+            onClick={handleSignClick}
+            className={location.pathname === "/sign-in" ? "active" : ""}
+          ></p>
         </li>
       </ul>
-      <div  className={nav ? 'head-icons' : 'header-icons'}>
-        <p onKeyDown={(e) => {
-          if (e.keyCode === 13) {
-            handleSignClick();
-          }
-          }} 
-          onClick={handleSignClick}
-          tabIndex="0"
-          className="user"
-        >
-          <i class="ri-user-3-fill"></i>Sign-in
-        </p>
+      <div className={nav ? "head-icons" : "header-icons"}>
+        {token ? (
+          <p
+            onClick={handleSignout}
+          >
+            Logout
+          </p>
+        ) : (
+          <p
+            onKeyDown={(e) => {
+              if (e.keyCode === 13) {
+                handleSignClick();
+              }
+            }}
+            onClick={handleSignClick}
+            tabIndex="0"
+            className="user"
+          >
+            <i class="ri-user-3-fill"></i>Sign-in
+          </p>
+        )}
+
         <div className={icon} id="menu-icon" onClick={toggle}></div>
       </div>
     </header>
