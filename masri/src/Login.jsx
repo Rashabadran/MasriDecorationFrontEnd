@@ -40,6 +40,7 @@ function Login() {
           title: "Login successful",
           icon: "success",
         }).then(() => {
+          localStorage.clear();
           sessionStorage.setItem("token", response.data.token);
           if (response.data.role === "admin") {
             {console.log(response.data)}

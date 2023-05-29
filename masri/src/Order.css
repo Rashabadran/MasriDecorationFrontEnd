@@ -11,6 +11,7 @@
         height: 337px;
             margin-top: 19px;
 }
+
 .orders-div {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,7 @@
 
 .orderPrice {
     display: flex;
+    align-items: baseline;
 }
 
 .order-style {
@@ -37,7 +39,7 @@
     flex-direction: column;
     border: 2px solid #ccc;
     border-radius: 10px;
-    width: 30%;
+    width: 25%;
     background-color: black;
 }
 
@@ -48,9 +50,14 @@
 }
 
 .order-writing {
-    margin-left: 8rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+        
+            
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 500px
+           
 }
 
 .quantity {
@@ -103,16 +110,18 @@
 .delete-icon {
     width: 30px;
     height: 30px;
+    margin-left: 370px !important;
+    margin-top: 3%;
 }
 
 .desOrder {
     color: white;
-    font-size: 20px !important;
+  
+    
 }
 
 .order-title {
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    
     color: white;
 }
 
@@ -134,7 +143,14 @@
     align-self: end;
 }
 
-
+@media only screen and (min-width:769px)and(max-width:1550px){
+    .delete-icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 261px !important;
+            margin-top: 3%;
+        }
+}
 /* Media queries for mobile */
 @media only screen and (max-width: 768px) {
     .orders-div {
@@ -168,6 +184,7 @@
 
     .order-writing {
         margin: 1rem;
+        
     }
 
     .quantity {
@@ -222,6 +239,7 @@
     .delete-icon {
         width: 20px;
         height: 20px;
+           
     }
 
     .order-title {

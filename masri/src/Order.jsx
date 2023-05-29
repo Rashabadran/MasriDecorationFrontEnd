@@ -17,6 +17,9 @@ function Order() {
   }
   const [canorder, setcanorder] = useState(true);
 
+
+
+
   function checkUserRole() {
     const userRole = sessionStorage.getItem("role");
     const token = sessionStorage.getItem("token");
@@ -24,11 +27,16 @@ function Order() {
     // Get the user's role from session storage
     if (!token || !userRole) {
       // User has the 'user' role, so navigate to the desired page
-
+localStorage.clear();
       setcanorder(false);
+      
+      
     } else {
       setcanorder(true);
     }
+    
+
+
   }
 
 
@@ -174,7 +182,14 @@ function handleProductClick(id) {
           {cartItems.map((item) => (
             <div className="order-det" key={item._id}>
               <div className="order-writing">
-                
+              <div className="trashhOrder">
+                 <img
+                    className="delete-icon"
+                    onClick={() => handleProductClick(item._id)}
+                    src={trash}
+                    alt=""
+                  />
+                  </div>
                 <img
                   src={item.image} // Access the image URL from local storage
                   alt="Product Image"
@@ -185,15 +200,15 @@ function handleProductClick(id) {
                 </div>
                 <p className="desOrder">Color: {item.color}</p>
                 <p className="desOrder">Quantity: {item.quantity}</p>
-                <div className="quantity">
-                 
-                  <img
-                    className="delete-icon"
-                    onClick={() => handleProductClick(item._id)}
-                    src={trash}
-                    alt=""
-                  />
-                
+                 <div  className="orderPrice desOrder">
+                  Price:{" "}
+                  {item.price == item.priceAfterDiscount ? (
+                    <h4 className="childPrice">{item.price}$</h4>
+                  ) : (
+                    <h4 className="childPrice,desOrder">
+                      {item.priceAfterDiscount}
+                    </h4>
+                  )}
                 </div>
               </div>
             </div>

@@ -11,6 +11,7 @@ import Decoration from './Decoration';
 import ProductDashboard from './productDashboard';
 import DecorationDashboard from './DecorationDashboard';
 import Order from './Order';
+import ContactUs from './ContactUs';
 function App() {
   return (
    <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
        <Route path="/decoration" element={<Decoration/>}/>
        <Route path="/decorationDashboard" element={<DecorationDashboard/>}/>
       <Route path="/order" element={<Order/>}/>
+      <Route path="/contactUs" element={<ContactUs/>}/>
 
        </Route>
     </Routes>
