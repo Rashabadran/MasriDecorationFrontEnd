@@ -4,7 +4,7 @@ import "./OrderDashboard.css";
 import React, { useCallback, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import del from './images/trash2.png';
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer, useToastContainer } from "react-toastify";
@@ -17,149 +17,117 @@ function Orderdashbord() {
 
   const [data, setData] = useState([]);
   const [cartStuff, setCartStuff] = useState([]);
-
+  const [imagee,setImage]=useState([])
   const getcategories = async () => {
     try {
       const response = await axios.get("http://localhost:3030/orders");
       setData(response.data);
-      {console.log(response.data.productID.image)}
+      
+      setImage(response.data.map((item) => item.cart[item._id].image[0]));
+      {console.log("rr",response.data)}
     } catch (error) {
       console.error(error);
     }
   };
+  
   useEffect(() => {
     getcategories();
     
   }, []);
-//   const handleProductClick = async (id) => {
-//     startSessionTimer();
-//     const response = await axios.delete(
-//       `http://localhost:3030/api/orders/${id}`
-//     );
-//     // console.log(response)
-//     toast.success("deleted  successfully!", {
-//       position: toast.POSITION.TOP_RIGHT,
-//     });
-//   };
+  {
+    console.log("dd", data);
+  }
+  
+  const handleProductClick = async (id) => {
+    
+    const response = await axios.delete(`http://localhost:3030/orders/${id}`);
+    // console.log(response)
+    toast.success("Deleted successfully!", {
+      position: toast.POSITION.TOP_RIGHT,
 
-//   function resetSession() {
-//     sessionStorage.clear(); // Clear the session storage
-//   }
+      onClose: () => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      },
+    });
+  };
 
-//   let sessionTimeout; // Variable to store the session timeout ID
 
-//   function startSessionTimer() {
-//     sessionTimeout = setTimeout(resetSession, 10 * 60 * 1000); // Set a timeout of 1 minute (1 * 60 * 1000 milliseconds)
-//   }
 
-//   function resetSessionTimer() {
-//     clearTimeout(sessionTimeout); // Clear the session timeout
-//     startSessionTimer(); // Start the session timer again
-//   }
 
-//   startSessionTimer();
 
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-//   function checkUserRole() {
-//     const userRole = sessionStorage.getItem("role");
-//     const token = sessionStorage.getItem("token");
+  function checkUserRole() {
+    const userRole = sessionStorage.getItem("role");
+    const token = sessionStorage.getItem("token");
 
-//     // Get the user's role from session storage
-//     if (!token || userRole === "user") {
-//       // User has the 'user' role, so navigate to the desired page
+    // Get the user's role from session storage
+    if (!token || userRole === "user") {
+      // User has the 'user' role, so navigate to the desired page
 
-//       navigate("/Login", { replace: true });
-//     }
-//   }
+      navigate("/Login", { replace: true });
+    }
+  }
 
   return (
     <>
       <div className="navbar-container">
-        {/* <div>
-          <img className="logoimg" src={logo} alt="" />
-        </div> */}
+        <ToastContainer />
+        {checkUserRole()}
+        <p className="Ordersdash-page">Orders</p>
 
-        <div>
-          {/* winterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrcategoryyyyyyyyyyyyyyyyyyyyyyyy */}
-          {/* <Link to="/Winter">
-            <p className="nav-buttons">Winter Categories</p>
-          </Link> */}
-        </div>
-
-        <div>
-          {/* summmmmer category  */}
-          {/* <Link to="/Dashboard">
-            <p className="nav-buttons">Summer Categories</p>
-          </Link> */}
-        </div>
-
-        {/* <div>
-          <Link to="/Orderdashboard ">
-            <p className="nav-buttons">Orders</p>
-          </Link>
-        </div> */}
-
-        {/* clear the session and go to the login  */}
-
-        {/* <div>
-          <Link
-            to="/Login"
-            onClick={() => {
-              sessionStorage.clear();
-            }}
-          >
-            <p className="nav-buttons">Sign out</p>
-          </Link>
+        <div className="ordersdash-div">
+          <div className="orderdash-style">
+            {data.map((item) => (
+              <div className="orderdash-det" key={item._id}>
+                <div className="orderdash-writing">
+                  <div className="orderdash-title desOrder">
+                    <h2>Order: {item._id}</h2>
+                  </div>
+                  <div className="cartit">
+                    <h3>Cart:</h3>
+                    <ul>
+                      {item.cart.map((cartItem) => (
+                        <li key={cartItem._id}>
+                          <p>Title: {cartItem.title}</p>
+                          <p>Color: {cartItem.color}</p>
+                          <p>Quantity: {cartItem.quantity}</p>
+                          
+                            Image:
+                            <p>Image:</p>
+                            <img src={cartItem.productID.image[0]?.url} />
+                          
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p className="desOrderdash">
+                    Payment type: {item.payment_type}
+                  </p>
+                  <p className="desOrderdash">
+                    Total price: {item.total_price}$
+                  </p>
+                  <p className="desOrderdash">
+                    Phone_number: {item.phone_number}
+                  </p>
+                  <p className="desOrderdash">Address: {item.address}</p>
+                  <p className="desOrderdash">Created at: {item.created_at}</p>
+                </div>
+                <div className="deldash">
+                  <img
+                    onClick={() => handleProductClick(item._id)}
+                    src={del}
+                    alt="trash"
+                    className="trashOrder"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <ToastContainer />
-      <p className="Ordersdash-page">Orders</p>
-
-      <div className="ordersdash-div">
-        <div className="orderdash-style">
-          {data.map((item) => (
-            <div className="orderdash-det" key={item._id}>
-              <div className="orderdash-writing">
-                <div className="orderdash-title desOrder">
-                  <h2>Order: {item._id}</h2>
-                </div>
-                <div className="cartit">
-                  <h3>Cart:</h3>
-                  <ul>
-                    {item.cart.map((cartItem) => (
-                      <li key={cartItem._id}>
-                        <p>Title: {cartItem.title}</p>
-                        <p>Size: {cartItem.size}</p>
-                        <p>Color: {cartItem.color}</p>
-                        <p>Quantity: {cartItem.quantity}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="desOrderdash">
-                  Payment type: {item.payment_type}
-                </p>
-                <p className="desOrderdash">Total price: {item.total_price}$</p>
-                <p className="desOrderdash">
-                  Phone_number: {item.phone_number}
-                </p>
-                <p className="desOrderdash">Address: {item.address}</p>
-                <p className="desOrderdash">Created at: {item.created_at}</p>
-              </div>
-              <div className="deldash">
-                <img
-                  onClick={() => handleProductClick(item._id)}
-                  src={del}
-                  alt=""
-                />
-              </div>
-            </div>
-          ))}
-        </div> */}
-      </div>
-
-     
     </>
   );
 }

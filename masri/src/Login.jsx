@@ -47,7 +47,7 @@ function Login() {
             sessionStorage.setItem('id', response.data._id);
             sessionStorage.setItem('token', response.data.token);
             sessionStorage.setItem('role', response.data.role);
-            window.location.href = "/productDashboard";
+            window.location.href = "/DecorationDashboard";
           } else if (response.data.role === "user") {
             window.location.href = "/";
             sessionStorage.setItem('id', response.data._id);

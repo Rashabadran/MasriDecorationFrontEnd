@@ -49,7 +49,7 @@ localStorage.clear();
     const carttwo = [];
     for (let i = 0; i < cartquan.length; i++) {
       const item = {};
-
+      
       item.quantity = cartquan[i];
       item.price = cartprice[i];
       item.totalprice = cartquan[i] * cartprice[i];
@@ -68,8 +68,20 @@ localStorage.clear();
     const handleSubmit = async (event) => {
     event.preventDefault();
 
+    
+
     if (canorder) {
-     
+       if (cartItems.length === 0) {
+         toast.error("The cart is empty. Please add products to your cart.", {
+           position: toast.POSITION.TOP_RIGHT,
+         });
+         return;
+       }
+        if (!address || !phone_number) {
+        toast.error("Please fill in the address and phone number fields.", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        return;}
       const cartitemid = cartItems.map((item) => item._id);
       const cartquan = cartItems.map((item) => item.quantity);
       const carttitle = cartItems.map((item) => item.title);
@@ -97,6 +109,7 @@ localStorage.clear();
           total_price: total,
           phone_number,
           address,
+         
 
         });
       // event.preventDefault();
@@ -199,7 +212,7 @@ function handleProductClick(id) {
                   alt="Product Image"
                   className="product-image"
                 />
-                
+
                 <div className="order-title desOrder">
                   <h2>{item.title}</h2>
                 </div>
@@ -219,6 +232,36 @@ function handleProductClick(id) {
             </div>
           ))}
         </div>
+        <form className="res-form">
+          <div>
+            <label htmlFor="name" className="res-label">
+              Name:
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="res-input"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone_nb" className="res-label">
+              Phone Number (xxxxxxxx):
+            </label>
+            <input
+              type="text"
+              id="phone_nb"
+              name="phone_nb"
+              value={phone_number}
+              onChange={(e) => setPhonenumber(e.target.value)}
+              className="res-input"
+              required
+            />
+          </div>
+        </form>
         <div className="order-total">
           <div>
             <p>Total:</p>
@@ -239,35 +282,6 @@ function handleProductClick(id) {
         <button className="orderalldelete" onClick={() => clearLocalStorage()}>
           Delete Order
         </button>
-        <form className="res-form">
-          <div>
-            <label htmlFor="name" className="res-label">
-              Name:
-            </label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="res-input"
-            />
-          </div>
-          <div>
-            <label htmlFor="phone_nb" className="res-label">
-              Phone Number (xxxxxxxx):
-            </label>
-            <input
-              type="text"
-              id="phone_nb"
-              name="phone_nb"
-              value={phone_number}
-              onChange={(e) => setPhonenumber(e.target.value)}
-              className="res-input"
-              required
-            />
-          </div>
-        </form>
       </div>
     </>
   );

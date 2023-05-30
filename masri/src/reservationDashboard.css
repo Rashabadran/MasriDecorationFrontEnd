@@ -1,0 +1,89 @@
+.tbl-wrper-res {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-res {
+    width: 100%;
+    border-collapse: collapse;
+}
+.divss{
+        display: flex;
+            flex-direction: column;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 86px;
+            font-size: 22px;
+            margin-bottom: 37px;
+}
+.table-res th,
+.table-res td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.single{
+        margin-left: 5%;
+            margin-right: 5%;
+}
+
+.table-res td {
+    text-align: center;
+}
+
+.table-res th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.table-res tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.res-name {
+        max-width: 301px;
+            padding-bottom: 1.3%;
+}
+
+.tools-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tools-list li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+.trashReservation{
+        width: 64px;
+        margin-left: 100%;
+}
+
+.button-delete-res {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s;
+    font-size: 25px;
+}
+.titleRes{
+        margin-left: 50%;
+        margin-top: 100px;
+}
+
+.button-delete-res:hover {
+    color: blue;
+}
+
+.button-delete-res:focus {
+    outline: none;
+}
+
+.button-delete-res .fa-trash {
+    font-size: 30px;
+}

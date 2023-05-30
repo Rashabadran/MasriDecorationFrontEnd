@@ -7,12 +7,13 @@ import Image5 from './images/a11.jpg';
 import './DecorationDashboard.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import trash from './images/x2.png';
+import trash from './images/trash2.png';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import { Gallery } from "react-grid-gallery";
 import { useState } from 'react';
-
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 const DecorationDashboard = () => {
 
   
@@ -21,7 +22,8 @@ const DecorationDashboard = () => {
   const [allImages,setAllImages]=useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [image,setImage]=useState("");
-
+  const [userId, setUserId] = useState("");
+  
 const handleImageChange = async (event) => {
     event.preventDefault();
     setImage(event.target.files[0]);
@@ -103,44 +105,86 @@ const getallitems = async () => {
   const closeAddFormPopup = () => {
     setShowAddForm(false);
   };
+
+
+
+   const navigate = useNavigate();
+
+   function checkUserRole() {
+     const userRole = sessionStorage.getItem("role");
+     const token = sessionStorage.getItem("token");
+
+     // Get the user's role from session storage
+     if (!token || userRole === "user") {
+       // User has the 'user' role, so navigate to the desired page
+
+       navigate("/Login", { replace: true });
+     }
+   }
+
   return (
     <div className="photo-grid2">
-   <ToastContainer />
-  <button type="submit" className="b-all addDeco" onClick={openAddFormPopup} >Add</button>
- 
-  <div className="gallery2">
-  
-   
-    
-      {Array.isArray(allImages) && allImages.map((photo,index) => (
-        <div key={index} className="gallery-item2">
-          <img src={allImages[index]?.image?.url} alt={photo.alt} />
-          {console.log("mm",allImages)}
-          {console.log("image",image)}
-          
-           <img src={trash} className='xtrash' onClick={() => {deleteCategory(photo._id)}}/>
-        </div>
-     
-       
-       
-      ))}
-      
-       
-    </div>
-       {showAddForm && (
+      <ToastContainer />
+      {checkUserRole()}
+      <button
+        type="submit"
+        className="b-all addDeco"
+        onClick={openAddFormPopup}
+      >
+        Add
+      </button>
+
+      <div className="gallery2">
+        {Array.isArray(allImages) &&
+          allImages.map((photo, index) => (
+            <div key={index} className="gallery-item2">
+              <img src={allImages[index]?.image?.url} alt={photo.alt} />
+              {console.log("mm", allImages)}
+              {console.log("image", image)}
+
+              <img
+                src={trash}
+                className="xtrash"
+                onClick={() => {
+                  deleteCategory(photo._id);
+                }}
+              />
+            </div>
+          ))}
+      </div>
+      {showAddForm && (
         <div className="res-popup">
           <div className="res-popup-content">
-     <input className="textAdd" type="file" id="images" name="image" onChange={handleImageChange} />
-     
-     <button type="submit" className="b-all addb" onClick={() => { addProduct(); }}>Submit</button>
-    </div>
-        
-       </div>
-      
-      
+          <p className='titleIma'>Add Image</p>
+            <input
+              className="textAdd"
+              type="file"
+              id="images"
+              name="image"
+              onChange={handleImageChange}
+            />
+
+            <button
+              type="submit"
+              className="b-all addb"
+              onClick={() => {
+                addProduct();
+              }}
+            >
+              Submit
+            </button>
+            <button
+              type="submit"
+              className="b-all addb"
+              onClick={() => {
+                closeAddFormPopup();
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
-       
-        
     </div>
   );
 };

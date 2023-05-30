@@ -36,13 +36,13 @@
     width: 280px;
     height: 338px;
     border-radius: 20px;
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
     position: relative;
     padding: 1.8rem;
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
     overflow: visible;
-    box-shadow: 8px 8px 20px #bebebe, -8px -8px 20px #ffffff;
+    /* box-shadow: 8px 8px 20px #bebebe, -8px -8px 20px #ffffff; */
     margin-top: 35px;
     display: flex;
     flex-direction: column;
@@ -100,7 +100,9 @@
 .text-body {
     color: rgb(134, 134, 134);
 }
-
+.titlee{
+    font-size:29px
+}
 /*Text*/
 .text-title {
     font-size: 1.5em;
@@ -130,25 +132,37 @@
 /*Price*/
 .price {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    height:34px;
+    font-size:19px
+}
+
+.colors{
+    padding-top:20px;
+    font-size: 19px;
+    
+}
+.colors span{
+    font-weight: 500;
 }
 
 .price h3 {
     color: black;
-    font-size: 25px;
+    /* font-size: 25px; */
     padding-right: 20px;
     font-weight: 400;
 }
 
 .price h4 {
     color: #999;
-    font-size: 25px;
+    /* font-size: 25px; */
     text-decoration: line-through;
 }
 
 .priceandTitle {
     /* Add your custom styles for the title here */
-        margin-left: -128px;
+        /* margin-left: -128px; */
+        margin-top: 4%;
 }
 
 
@@ -168,6 +182,10 @@
     .priceandTitle {
          margin-left: 0px;
           }
+    .colors {
+        padding-top: 0px;
+        font-size: 19px;
+                  }
   }
 
 @media screen and (min-width: 681px) and(max-width: 768px) {
@@ -181,6 +199,10 @@
         width: 60%;
         height: 320px;
     }
+         .colors {
+             padding-top: 0px;
+             font-size: 19px;
+         }
 }
 
         @media screen and (min-width:768px) and (max-width: 1550px) {
@@ -198,6 +220,10 @@
             .priceandTitle {
                 margin-left: 0px; 
             }
+                         .colors {
+                             padding-top: 0px;
+                             font-size: 19px;
+                         }
 }
           @media screen and (min-width:1551px) and (max-width: 1160px) {
               .allProductsBalloons {
@@ -205,6 +231,10 @@
                   grid-gap: 20px;
                   margin-bottom: 30px;
               }
+                           .colors {
+                               padding-top: 0px;
+                               font-size: 19px;
+                           }
     
               .card {
                   width: 60%;

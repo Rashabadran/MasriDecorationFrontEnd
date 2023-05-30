@@ -11,7 +11,7 @@ import baskett from './images/xx.png'
 import trash from './images/trash2.png'
 import pencil from './images/edit.png'
 import plus from './images/plus2.png'
-
+import { useNavigate } from "react-router-dom";
 function Category() {
   const [category, setCategory] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
@@ -311,10 +311,26 @@ const deleteProduct = async (id) => {
     setShowEditForm(false);
   };
 
+   const navigate = useNavigate();
+
+   function checkUserRole() {
+     const userRole = sessionStorage.getItem("role");
+     const token = sessionStorage.getItem("token");
+
+     // Get the user's role from session storage
+     if (!token || userRole === "user") {
+       // User has the 'user' role, so navigate to the desired page
+
+       navigate("/Login", { replace: true });
+     }
+   }
+
+
   return (
     
     <div className="category-container">
     <ToastContainer />
+    {checkUserRole()}
     <div className="flexCategory">
     <button class="c-button b-all" onClick={handleAddStudent} > <img className="pluss"src={plus}/>
   
@@ -357,7 +373,7 @@ const deleteProduct = async (id) => {
             <div className="card2" key={item._id}>
               <img
                 className="card-details2"
-                src={images && images[index]?.url}
+                src={item && item.image[0].url}
                 alt={item.title}
               />
               <div className="priceandTitle2">
@@ -373,12 +389,23 @@ const deleteProduct = async (id) => {
                   )}
                 </div>
                 <div className="flexTrash">
-                <img src={pencil} className="pencil" alt="edit" onClick={() => {getproductsbyid(item._id)}}/>
-                <img className="trash " src={trash} onClick={() => {deleteProduct(item._id)}}/>
-               </div>
+                  <img
+                    src={pencil}
+                    className="pencil"
+                    alt="edit"
+                    onClick={() => {
+                      getproductsbyid(item._id);
+                    }}
+                  />
+                  <img
+                    className="trash "
+                    src={trash}
+                    onClick={() => {
+                      deleteProduct(item._id);
+                    }}
+                  />
+                </div>
               </div>
-             
-
             </div>
           );
         })}
@@ -387,6 +414,7 @@ const deleteProduct = async (id) => {
       </div>
        <div className="allll">
           {addStudent &&(
+            
           <form className='firstt-formm' id='firstt-formm' onSubmit={addCategory} >
           <br />
           <legend className='legendd'>Add Category Info</legend>

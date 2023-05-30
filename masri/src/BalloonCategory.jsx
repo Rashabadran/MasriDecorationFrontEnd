@@ -50,34 +50,43 @@ function Category() {
     ? products
     : products.filter((item) => item.category._id === selectedCategoryId);
 
+    
   return (
     <div className="category-container">
+      {console.log("filtered ", filteredCategory)}
+
       <div className="category-buttons">
         <button
           value=""
           onClick={handleButtonClick}
-          className={`category-button ${isAllProductsSelected ? "selected" : ""}`}
+          className={`category-button ${
+            isAllProductsSelected ? "selected" : ""
+          }`}
         >
           All Products
         </button>
-        {Array.isArray(category) && category.map((item, index) => (
-          <button
-            key={index}
-            value={item._id}
-            onClick={handleButtonClick}
-            className={`category-button ${selectedCategoryId === item._id ? "selected" : ""}`}
-          >
-            {item.title}
-          </button>
-        ))}
+        {Array.isArray(category) &&
+          category.map((item, index) => (
+            <button
+              key={index}
+              value={item._id}
+              onClick={handleButtonClick}
+              className={`category-button ${
+                selectedCategoryId === item._id ? "selected" : ""
+              }`}
+            >
+              {item.title}
+            </button>
+          ))}
       </div>
       <div className="allProductsBalloons">
         {filteredCategory.map((item, index) => {
           return (
             <div className="card" key={item._id}>
+              {console.log("items", item.image[0].url)}
               <img
                 className="card-details"
-                src={images && images[index]?.url}
+                src={item && item.image[0].url}
                 alt={item.title}
               />
               <div className="priceandTitle">
@@ -92,11 +101,18 @@ function Category() {
                     </div>
                   )}
                 </div>
+                <div className="colors">
+                  {console.log("c", item)}
+                  <p>
+                    <span>Colors : </span>
+                    {item.color.join(", ")}
+                  </p>
+                </div>
               </div>
-              <Link to={`/singleproduct/${item._id}`}>
-              <button className="card-button">More info</button>
-              </Link>
 
+              <Link to={`/singleproduct/${item._id}`}>
+                <button className="card-button">More info</button>
+              </Link>
             </div>
           );
         })}

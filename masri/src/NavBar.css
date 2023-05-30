@@ -54,7 +54,7 @@ width: 12rem;
 
 .nav-links li a,
 .nav-links li p {
-    font-size: 1.3rem;
+    font-size: 1.5rem!important;
     font-weight: 600;
     padding: 5px 0;
     margin: 0px 30px;
@@ -63,7 +63,7 @@ width: 12rem;
     color: black;
 }
 
-.nav-links li a:is(:hover, :focus, :focus-visible) {
+.nav-links li a:is(:hover, :focus, :focus-visible, :active) {
     color: #8be2ff;
     outline: none;
 }
@@ -73,16 +73,16 @@ width: 12rem;
 
 }
 
-/* .nav-links li a.active {
-    color: lightpink;
-  } */
+.nav-links li a.active {
+    color: #19c5ff;
+  }
 
-.maintain a:is(:hover, :focus, :focus-visible) {
-    color: white !important;
+.maintain a:is(:hover, :focus, :focus-visible ) {
+    /* color: white !important; */
     outline: none;
 }
 
-.maintain a.active {
+.maintain a:active {
     color: #8be2ff !important;
 }
 
@@ -99,8 +99,8 @@ width: 12rem;
     color: black;
 }
 
-.header-icons p:is(:hover, :focus, :focus-visible) {
-    color: purple;
+.header-icons p:is(:hover, :focus, :focus-visible, :active) {
+    color: #8be2ff;
     outline: none;
 }
 
@@ -116,8 +116,8 @@ width: 12rem;
     transition: all 0.3s ease;
 }
 
-.head-icons p:is(:hover, :focus, :focus-visible) {
-    color: white;
+.head-icons p:is(:hover, :focus, :focus-visible :active) {
+    color:#8be2ff;
     outline: none;
 }
 
@@ -153,12 +153,19 @@ width: 12rem;
         font-weight: bold;
     }
 
-    .nav-links li a,
+
     .nav-links li p {
         font-size: 0.8rem;
         padding: 5px 0;
         margin: 0px 20px;
-        color: #7ec4db;
+        color: black;
+    }
+
+    .nav-links li a {
+        font-size: 0.8rem;
+        padding: 5px 0;
+        margin: 0px 20px;
+        color: black;
     }
 
     .header-icons p {
@@ -210,7 +217,7 @@ width: 12rem;
         right: -100%;
         width: 200px;
         height: 29vh;
-        background-color: lightpink;
+        background-color: #8be2ff;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -238,8 +245,8 @@ width: 12rem;
         display: block;
     }
 
-    .maintain a.active,
+    /* .maintain a.active,
     .maintain p.active {
         color: rgb(180, 28, 28) !important;
-    }
+    } */
 }

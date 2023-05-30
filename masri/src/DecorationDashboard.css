@@ -10,67 +10,84 @@
 }
   .xtrash {
       width: 50px!important;
-      height: 44px!important;
+      height: 63px!important;
       margin-top: 15px;
       margin-left: 10px;
+
   }
 .addDeco{
     margin-top: 100px;
     margin-left: 87%;
 }
+.titleIma{
+    display: flex;
+    justify-content: center;
+}
 .gallery-item2 {
     position: relative;
     overflow: hidden;
-    padding-bottom: 100%;
-    width: 500px;
-    /* Adjust the width as needed */
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        width: 80%;
-    }
-
-    @media (max-width: 480px) {
-        width: 66%;
-    
-}
+    /* padding-bottom: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .gallery-item2 img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
     object-fit: cover;
     border-radius: 5%;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-out;
-    /* Add transition effect */
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        border-radius: 10%;
-    }
-
-    @media (max-width: 480px) {
-        border-radius: 10%;
-    }
 }
 
 .gallery-item2 img:hover {
     transform: scale(1.05);
     border-radius: 5%;
-    /* Apply scale animation on hover */
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        transform: none;
-        border-radius: 10%;
-    }
-
-    @media (max-width: 480px) {
-        border-radius: 0;
-    }
 }
 
+
+
+
+@media all and (max-width:500px){
+     .gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    margin-top: 6%;
+    margin-bottom: 3%;
+    gap: 30px;
+    margin-left: 5%;
+    position: relative;
+    margin-right: 5%;
+    margin-top: 20vh;
+}
+    .gallery-item2{
+        display: flex;
+    width: 100%;
+    height: 30vh;
+    position: relative;
+    padding-bottom: 0;
+    margin-top:50px
+    }
+    .addDecoration{
+    position: absolute;
+    right: 0;
+    top: -6vh;}
+}
+
+@media all and(min-width:500px)and (max-width:850px){
+    .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    margin-top: 6%;
+    margin-bottom: 3%;
+    gap: 30px;
+    margin-left: 5%;
+    position: relative;
+    margin-right: 5%;
+    margin-top: 20vh;
+}
+}
