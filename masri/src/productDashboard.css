@@ -6,21 +6,97 @@
         
            
 }
+
+
+
+.legendd {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.alignForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.alignForm label {
+  margin-right: 10px;
+}
+
+.textForm1 {
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+
+
 .titlee2{
       margin-top: 17px;
         font-size: xx-large;
 }
-.b-all{
-    font-size: 20px;
-    background-color: #8be2ff;
-    padding: 15px;
-    border-radius: 26px;
-    cursor: pointer;
-    margin-top: 20px;
-    font-size: 1.5rem;
-    padding: 10px 20px;
-    border: 2px solid #8be2ff;
-    box-shadow: 3px 3px grey;
+ .res-popupPro {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 90px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    z-index: 9999;
+    align-items: baseline;
+}
+    .res-popup-contentPro {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 513px;
+    border: 3px solid black;
+    width: 80%; 
+    margin-top: 90px; 
+  }
+
+
+  .res-popupEdit {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 90px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    z-index: 9999;
+    align-items: baseline;
+}
+    .res-popup-contentEdit {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 513px;
+    border: 3px solid black;
+    width: 80%; 
+    margin-top: 90px; 
+  }
+
+
+  .res-popup-contentCat {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 314px;
+    border: 3px solid black;
+    width: 41%;
+    margin-top: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .firstt-formm {
    
@@ -36,12 +112,12 @@
 
 
 }
-
+/* 
   .alignForm {
       align-self: self-start;
       margin-left: 50px;
       color: rgba(255, 255, 255, 0.962) !important;
-  }
+  } */
   .background-overlay {
       display: block;
   }
@@ -300,6 +376,15 @@
               margin-bottom: 50px;
             
         }
+
+        .textAdd {
+  width: 100%;
+  /* Adjust the width as needed */
+}
+
+.textform {
+  grid-column: span 2;
+}
     
         /*Price*/
         .price2 {

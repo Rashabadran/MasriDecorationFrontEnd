@@ -101,24 +101,14 @@ function NavBarDash() {
           </a>
         </li>
         <li className="willhide">
-          {token ? (
-            <li className={nav ? "maintain" : "normal"}>
-              <p onClick={handleSignout}>Logout</p>
-            </li>
-          ) : (
-            <li className={nav ? "maintain" : "normal"}>
-              <p
-                onClick={handleSignClick}
-                className={location.pathname === "/login" ? "active" : ""}
-              >
-                Sign In
-              </p>
-            </li>
-          )}
+          <p
+            onClick={handleSignClick}
+            className={location.pathname === "/sign-in" ? "active" : ""}
+          ></p>
         </li>
       </ul>
       <div className={nav ? "head-icons" : "header-icons"}>
-        {/* {token ? (
+        {token ? (
           <p onClick={handleSignout}>Logout</p>
         ) : (
           <p
@@ -133,7 +123,7 @@ function NavBarDash() {
           >
             <i class="ri-user-3-fill"></i>Sign-in
           </p>
-        )} */}
+        )}
 
         <div className={icon} id="menu-icon" onClick={toggle}></div>
       </div>

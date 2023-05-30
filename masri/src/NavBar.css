@@ -50,13 +50,14 @@ width: 12rem;
 .nav-links {
     display: flex;
     margin: 0 auto;
+    justify-content: flex-end;
 }
 
 .nav-links li a,
 .nav-links li p {
     font-size: 1.5rem!important;
     font-weight: 600;
-    padding: 5px 0;
+    padding: 0px 0;
     margin: 0px 30px;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -107,6 +108,14 @@ width: 12rem;
 .head-icons {
     display: flex;
     align-items: center;
+     margin-left: 20px;
+}
+.nav-links li:last-child {
+  margin-right: 30px; /* Add margin to the last menu item (cart) */
+}
+
+.nav-links li {
+  margin-left: 30px; /* Increase the margin between menu items */
 }
 
 .head-icons p {
@@ -223,6 +232,9 @@ width: 12rem;
         justify-content: space-evenly;
         border-radius: 0px 0px 10px 10px;
         transition: 0.3s all ease;
+        justify-content: space-between; /* Ensure equal spacing between menu items */
+    align-items: center; /* Align items vertically in the burger menu */
+    padding-right: 30px;
     }
 
     .nav-links a {

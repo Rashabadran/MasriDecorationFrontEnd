@@ -162,7 +162,9 @@
         margin-top: 1rem;
         font-size: 1.5rem;
     }
-
+    .imgOrder{
+            width: 144px;
+    }
     .orderdash-title h2 {
         font-size: 1rem;
     }

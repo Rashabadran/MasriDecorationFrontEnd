@@ -50,7 +50,17 @@ function Register() {
           text: "Email already exists",
           icon: "error",
         });
-      } else {
+        return;
+      } 
+      else if (!name || !email || !password) {
+      swal({
+        title: "Error",
+        text: "Please fill in all the fields",
+        icon: "error",
+      });
+      return;
+    }
+      else {
         const response = await axios.post(
           "http://localhost:3030/users/",
           {

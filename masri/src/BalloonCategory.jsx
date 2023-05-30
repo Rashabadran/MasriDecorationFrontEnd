@@ -75,7 +75,8 @@ function Category() {
                 selectedCategoryId === item._id ? "selected" : ""
               }`}
             >
-              {item.title}
+            
+              {item.cattitle}
             </button>
           ))}
       </div>

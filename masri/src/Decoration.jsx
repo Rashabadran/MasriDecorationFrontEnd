@@ -111,7 +111,7 @@ const getallitems = async () => {
           <div className="gallery">
             <button
               type="submit"
-              className="b-all addDecoration"
+              className="daily-button addDecoration"
               onClick={openFormPopup}
             >
               Reserve Now
@@ -310,7 +310,7 @@ const getallitems = async () => {
                     name="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="res-input-details"
+                    className=" res-input-details"
                   ></textarea>
                 </div>
 
@@ -318,12 +318,15 @@ const getallitems = async () => {
               </form>
               <button
                 type="submit"
-                className="res-submit-btn"
+                className=" daily-button res-submit-btn"
                 onClick={submitHandler}
               >
                 Submit
               </button>
-              <button className="res-close-btn" onClick={closeFormPopup}>
+              <button
+                className="daily-button res-close-btn"
+                onClick={closeFormPopup}
+              >
                 Close
               </button>
             </div>

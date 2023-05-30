@@ -198,14 +198,6 @@ function handleProductClick(id) {
           {cartItems.map((item) => (
             <div className="order-det" key={item._id}>
               <div className="order-writing">
-                <div className="trashhOrder">
-                  <img
-                    className="delete-icon"
-                    onClick={() => handleProductClick(item._id)}
-                    src={trash}
-                    alt=""
-                  />
-                </div>
                 <img
                   src={item.image}
                   // Access the image URL from local storage
@@ -227,6 +219,14 @@ function handleProductClick(id) {
                       {item.priceAfterDiscount}
                     </h4>
                   )}
+                </div>
+                <div className="trashhOrder">
+                  <img
+                    className="delete-icon"
+                    onClick={() => handleProductClick(item._id)}
+                    src={trash}
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
@@ -272,14 +272,17 @@ function handleProductClick(id) {
         </div>
         <div className="order-pay">{/* ... */}</div>
         <button
-          className="order-check"
+          className=" daily-button order-check"
           onClick={(event) => {
             handleSubmit(event);
           }}
         >
           Place Order
         </button>
-        <button className="orderalldelete" onClick={() => clearLocalStorage()}>
+        <button
+          className=" daily-button orderalldelete  "
+          onClick={() => clearLocalStorage()}
+        >
           Delete Order
         </button>
       </div>

@@ -42,11 +42,13 @@ function Category() {
   const [Products_id, setProducts_id] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
-
+  const [categoryForm,setCategoryForm]=useState(false);
   const getcategories = async () => {
     try {
       const response = await axios.get("http://localhost:3030/product/");
+      {console.log(response.data)}
       setCategory(response.data);
+
     } catch (error) {
       console.error(error);
     }
@@ -144,6 +146,7 @@ function Category() {
     cattitle: cattitle,
   
   };
+  
 
   try {
     
@@ -212,15 +215,7 @@ const deleteProduct = async (id) => {
   }
 };
   
- const handleAddStudent=async (e)=>{
-  e.preventDefault();
-  
-  const addForm= document.getElementById('firstt-formm');
-  
-  // addForm&& window.scrollTo({ top: addForm.offsetTop, behavior: "smooth" });
-  // setEditStudent(false)
-  setAddStudent(true);
- }
+ 
 
 
  function handleProductImage(e) {
@@ -311,6 +306,14 @@ const deleteProduct = async (id) => {
     setShowEditForm(false);
   };
 
+   const openCategoryForm = () => {
+     setCategoryForm(true);
+   };
+
+   const closeCategoryForm = () => {
+     setCategoryForm(false);
+   };
+
    const navigate = useNavigate();
 
    function checkUserRole() {
@@ -327,220 +330,326 @@ const deleteProduct = async (id) => {
 
 
   return (
-    
     <div className="category-container">
-    <ToastContainer />
-    {checkUserRole()}
-    <div className="flexCategory">
-    <button class="c-button b-all" onClick={handleAddStudent} > <img className="pluss"src={plus}/>
-  
-</button>
-
-
-
-      <div className="category-buttons">
-        <button
-          value=""
-          onClick={handleButtonClick}
-          className={`category-button ${isAllProductsSelected ? "selected" : ""}`}
-        >
-          All Products
-          
+      <ToastContainer />
+      {checkUserRole()}
+      <div className="flexCategory">
+        <button class="c-button daily-button" onClick={openCategoryForm}>
+          {" "}
+          <img className="pluss" src={plus} />
         </button>
-        {Array.isArray(category) && category.map((item, index) => (
+
+        <div className="category-buttons">
           <button
-            key={index}
-            value={item._id}
+            value=""
             onClick={handleButtonClick}
-            className={`category-button ${selectedCategoryId === item._id ? "selected" : ""}`}
+            className={`category-button ${
+              isAllProductsSelected ? "selected" : ""
+            }`}
           >
-            {item.title}
-            <img className="basketImage " src={baskett} onClick={() => {deleteCategory(item._id)}}/>
+            All Products
           </button>
-        ))}
-      </div>
+          {Array.isArray(category) &&
+            category.map((item, index) => (
+              <button
+                key={index}
+                value={item._id}
+                onClick={handleButtonClick}
+                className={`category-button ${
+                  selectedCategoryId === item._id ? "selected" : ""
+                }`}
+              >
+                {item.cattitle}
+              
+                <img
+                  className="basketImage "
+                  src={baskett}
+                  onClick={() => {
+                    deleteCategory(item._id);
+                  }}
+                />
+              </button>
+            ))}
+        </div>
       </div>
       <div className="buttonwithProduct">
-      <div className="addProd">
-      <button class=" b-all productAdd" onClick={openFormPopup} > <img className="pluss"src={plus}/>Add
-  
-</button>
-           
-      </div>
-      <div className="allProductsBalloons2">
-        {filteredCategory.map((item, index) => {
-          return (
-            <div className="card2" key={item._id}>
-              <img
-                className="card-details2"
-                src={item && item.image[0].url}
-                alt={item.title}
-              />
-              <div className="priceandTitle2">
-                <div className="titlee2">{item.title}</div>
-                <div className="price2">
-                  {item.price === item.priceAfterDiscount ? (
-                    <h3>{item.price}$</h3>
-                  ) : (
-                    <div className="price2">
-                      <h3>{item.priceAfterDiscount}$</h3>
-                      <h4>{item.price}$</h4>
-                    </div>
-                  )}
-                </div>
-                <div className="flexTrash">
-                  <img
-                    src={pencil}
-                    className="pencil"
-                    alt="edit"
-                    onClick={() => {
-                      getproductsbyid(item._id);
-                    }}
-                  />
-                  <img
-                    className="trash "
-                    src={trash}
-                    onClick={() => {
-                      deleteProduct(item._id);
-                    }}
-                  />
+        <div className="addProd">
+          <button class=" daily-button productAdd" onClick={openFormPopup}>
+            Add
+          </button>
+        </div>
+        <div className="allProductsBalloons2">
+          {filteredCategory.map((item, index) => {
+            return (
+              <div className="card2" key={item._id}>
+                <img
+                  className="card-details2"
+                  src={item && item.image[0].url}
+                  alt={item.title}
+                />
+                <div className="priceandTitle2">
+                  <div className="titlee2">{item.title}</div>
+                  <div className="price2">
+                    {item.price === item.priceAfterDiscount ? (
+                      <h3>{item.price}$</h3>
+                    ) : (
+                      <div className="price2">
+                        <h3>{item.priceAfterDiscount}$</h3>
+                        <h4>{item.price}$</h4>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flexTrash">
+                    <img
+                      src={pencil}
+                      className="pencil"
+                      alt="edit"
+                      onClick={() => {
+                        getproductsbyid(item._id);
+                      }}
+                    />
+                    <img
+                      className="trash "
+                      src={trash}
+                      onClick={() => {
+                        deleteProduct(item._id);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-
-      </div>
-       <div className="allll">
-          {addStudent &&(
-            
-          <form className='firstt-formm' id='firstt-formm' onSubmit={addCategory} >
-          <br />
-          <legend className='legendd'>Add Category Info</legend>
-          <br />
-          <label className='alignForm'>Category<input className='textForm1 ' type='text'  onChange={e => setTitle(e.target.value)}  name="cattitle"  required></input></label>
-          <br/>
-          <input type="submit" className='button colle-btn b-all'  ></input>
-          <input type="submit" value='close' className='button colle-btn b-all' onClick={()=>(window.location.reload())}></input>
-          
-          <br />
-        </form>)}
+            );
+          })}
         </div>
-        
+      </div>
 
-              {showForm && (
-        <div className="res-popup">
-          <div className="res-popup-content">
-          
+      {categoryForm && (
+        <div className="res-popupPro">
+          <div className="res-popup-contentCat">
+            <h1>Add Category Info</h1>
+
+            <label className="alignForm">
+              Category: &nbsp;&nbsp;
+              <input
+                className="textForm1 "
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+                name="cattitle"
+                required
+              ></input>
+            </label>
+            <br />
+            <input
+              type="submit"
+              onClick={(e) => {
+                addCategory(e);
+              }}
+              className="button colle-btn daily-button daily-button"
+            ></input>
+            <br />
+
+            <input
+              type="submit"
+              value="close"
+              className="button colle-btn daily-button"
+              onClick={() => closeCategoryForm()}
+            ></input>
+
+            <br />
+          </div>
+        </div>
+      )}
+
+      {showForm && (
+        <div className="res-popupPro">
+          <div className="res-popup-contentPro">
             <h1>Add Products </h1>
 
-        <label ><b>Title</b></label>
-        <input className="textAdd" type="text" placeholder="Enter the product name" name="title" required onChange={e => setproductTitle(e.target.value)} />
-        <br />
-        
+            <label>
+              <b>Title</b>
+            </label>
+            <input
+              className="textAdd"
+              type="text"
+              placeholder="Enter the product name"
+              name="title"
+              required
+              onChange={(e) => setproductTitle(e.target.value)}
+            />
+            <br />
 
-        <label ><b>Price</b></label>
-        <input className="textAdd" type="text" placeholder="Enter price" name="psw" required onChange={e => setPrice(e.target.value)} />
-        <br />
+            <label>
+              <b>Price</b>
+            </label>
+            <input
+              className="textAdd"
+              type="text"
+              placeholder="Enter price"
+              name="psw"
+              required
+              onChange={(e) => setPrice(e.target.value)}
+            />
+            <br />
 
+            <label className="textform">Sale</label>
+            <br />
+            <input
+              className="textAdd"
+              type="text"
+              value={discount_per}
+              onChange={(e) => setSale(e.target.value)}
+            />
+            <br />
 
-         <label className="textform" >Sale</label><br />
-        <input className="textAdd" type="text" value={discount_per} onChange={e => setSale(e.target.value)} />
-        <br />
-        
+            <label className="textform">color</label>
+            <br />
+            <input
+              className="textAdd"
+              type="text"
+              value={color}
+              onChange={handlecolor}
+            />
+            <br />
 
-        <label className="textform" >color</label><br />
-        <input className="textAdd" type="text" value={color} onChange={handlecolor} />
-        <br />
+            <label className="textform">Description</label>
+            <br />
+            <input
+              className="textAdd"
+              type="text"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <br />
 
-        <label className="textform" >Description</label><br />
-        <input className="textAdd" type="text" onChange={e => setDescription(e.target.value)} />
-        <br />
+            <label>Select an option:</label>
+            <select
+              className="textAdd"
+              value={category._id}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option></option>
+              {Array.isArray(category) &&
+                category.map((item) => (
+                  <option value={item._id}>{item.cattitle}</option>
+                ))}
+            </select>
+           
+            <div>
+              <label>Choose Images:</label>
+              <br />
+              <input
+                className="textAdd"
+                type="file"
+                id="images"
+                name="file"
+                onChange={handleProductImage}
+                multiple
+              />
+              <br />
+              {threeimages.map((image, index) => (
+                <img key={index} src={image} alt={`Image ${index}`} />
+              ))}
+            </div>
 
-         <label>Select an option:</label>
-      <select className="textAdd" value={category._id} onChange={(e) => setSelectedCategory(e.target.value)} >
-      
-        <option></option>
-        {Array.isArray(category) && category.map((item) => (
-          
-        <option value={item._id}>{item.title}</option>))}
-        
-      </select>
-      
-          
-        <div>
-          <label >Choose Images:</label>
-          <br />
-          <input className="textAdd" type="file" id="images" name="file" onChange={handleProductImage} multiple />
-          <br />
-          {threeimages.map((image, index) => (
-            <img key={index} src={image} alt={`Image ${index}`} />
-          ))}
-        </div>
-
-            
-
-        <button type="submit" className="b-all addb" onClick={() => { addProduct(); }}>Submit</button>
-        <button type="close" className="b-all addb" onClick={closeFormPopup}>Close</button>
+            <button
+              type="submit"
+              className="daily-button addb"
+              onClick={() => {
+                addProduct();
+              }}
+            >
+              Submit
+            </button>
+            <br />
+            <br />
+            <button
+              type="close"
+              className="daily-button addb"
+              onClick={closeFormPopup}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
 
+      {showEditForm && (
+        <div className="res-popupEdit">
+          <div className="res-popup-contentEdit">
+            <h1>Edit Products </h1>
 
+            <label>
+              <b>Title</b>
+            </label>
+            <input
+              className="textAdd"
+              type="text"
+              placeholder={productsdata && productsdata.title}
+              name="title"
+              required
+              onChange={(e) => {
+                setedittitle(e.target.value);
+              }}
+            />
+            <br />
 
-        {showEditForm && (
-        <div className="res-popup">
-          <div className="res-popup-content">
-          
-           <h1>Edit  Products </h1>
-       
-        <label ><b>Title</b></label>
-        <input className="textAdd" type="text" placeholder={productsdata && productsdata.title} name="title" required onChange={(e) => { setedittitle(e.target.value) }} />
-        <br />
+            <label>
+              <b>Price</b>
+            </label>
+            <input
+              className="textAdd"
+              type="text"
+              placeholder={productsdata && productsdata.price}
+              name="psw"
+              required
+              onChange={(e) => {
+                seteditPrice(e.target.value);
+              }}
+            />
+            <br />
 
-        <label ><b>Price</b></label>
-        <input className="textAdd" type="text" placeholder={productsdata && productsdata.price} name="psw" required onChange={(e) => { seteditPrice(e.target.value) }} />
-        <br />
+            <label className="textform">
+              <b>color</b>
+            </label>
+            <input
+              className="textAdd"
+              type="text"
+              placeholder={productsdata && productsdata.color}
+              onChange={handleeditcolor}
+            />
+            <br />
 
-
-        <label className="textform" ><b>color</b></label>
-        <input className="textAdd" type="text" placeholder={productsdata && productsdata.color} onChange={handleeditcolor} />
-        <br />
-
-        <label className="textform" ><b>Description</b></label>
-        <input className="textAdd" type="text" placeholder={productsdata && productsdata.description} onChange={e => seteditDescription(e.target.value)} />
-        <br />
-        
-            
-
-        <button type="submit" className="b-all addb" onClick={() => { editProduct(); }}>Update</button>
-        <button type="close" className="b-all addb" onClick={closeEditFormPopup}>Close</button>
+            <label className="textform">
+              <b>Description</b>
+            </label>
+            <input
+              className="textAdd"
+              type="text"
+              placeholder={productsdata && productsdata.description}
+              onChange={(e) => seteditDescription(e.target.value)}
+            />
+            <br />
+            <br />
+            <button
+              type="submit"
+              className="daily-button addb"
+              onClick={() => {
+                editProduct();
+              }}
+            >
+              Update
+            </button>
+            <br />
+            <br />
+            <button
+              type="close"
+              className="daily-button addb"
+              onClick={closeEditFormPopup}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-
-      
-
-
-       
     </div>
   );
 }

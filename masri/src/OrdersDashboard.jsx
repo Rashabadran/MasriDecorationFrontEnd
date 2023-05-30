@@ -96,7 +96,7 @@ function Orderdashbord() {
                           <p>Quantity: {cartItem.quantity}</p>
                           
                             Image:
-                            <p>Image:</p>
+                            <p className="imgOrder">Image:</p>
                             <img src={cartItem.productID.image[0]?.url} />
                           
                         </li>

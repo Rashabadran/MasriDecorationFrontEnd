@@ -49,10 +49,9 @@ const getallitems = async () => {
      
     const formData = new FormData();
     formData.append("image", image);
-    {console.log("rrrrr",formData)}
+    
     
     await axios.post("http://localhost:3030/decorationCat/", formData)
-     
      toast.success('Added successfully!', {
       position: toast.POSITION.TOP_RIGHT,
        
@@ -128,7 +127,7 @@ const getallitems = async () => {
       {checkUserRole()}
       <button
         type="submit"
-        className="b-all addDeco"
+        className="daily-button addDeco"
         onClick={openAddFormPopup}
       >
         Add
@@ -155,7 +154,7 @@ const getallitems = async () => {
       {showAddForm && (
         <div className="res-popup">
           <div className="res-popup-content">
-          <p className='titleIma'>Add Image</p>
+            <h1 className="titleIma">Add Image</h1>
             <input
               className="textAdd"
               type="file"
@@ -166,16 +165,18 @@ const getallitems = async () => {
 
             <button
               type="submit"
-              className="b-all addb"
+              className="daily-button addb"
               onClick={() => {
                 addProduct();
               }}
             >
               Submit
             </button>
+            <br/>
+            <br/>
             <button
               type="submit"
-              className="b-all addb"
+              className="daily-button addb"
               onClick={() => {
                 closeAddFormPopup();
               }}

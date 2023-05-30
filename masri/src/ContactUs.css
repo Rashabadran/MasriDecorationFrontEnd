@@ -24,7 +24,7 @@
 .contact-form input {
     padding: 10px;
     border: 2px solid rgb(214, 214, 214);
-    width: 100%;
+    width: 95%;
     border-radius: 2px;
 }
 
@@ -129,6 +129,7 @@
     .primary {
         width: 100%;
         padding: 2vh;
+            margin-top: 74px;
     }
 
     .insider {
@@ -140,9 +141,9 @@
     }
 
     .contact-form {
-        width: 300px;
-        padding: 2vh;
-    }
+    width: 259px;
+    padding: 2vh;
+}
 
     .contact-form label {
         font-size: 16px;
@@ -153,6 +154,10 @@
         font-size: 14px;
     }
 
+
+    .contact-form input{
+            width:93%
+    }
     .form-sbmt {
         font-size: 16px;
         padding: 10px;
@@ -243,4 +248,10 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 14px 0px;
     }
 
+}
+@media (max-width: 350px){
+.contact-form {
+    width: 243px;
+    padding: 2vh;
+}
 }

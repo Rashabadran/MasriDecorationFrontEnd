@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./NavBar.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../src/images/logoo.png";
+import cart from "./images/carts.png";
+
 
 function NavBar() {
   let navigate = useNavigate();
@@ -50,6 +52,7 @@ function NavBar() {
     navigate("/login");
   };
 
+  
   window.addEventListener("scroll", navbar);
 
   return (
@@ -89,20 +92,29 @@ function NavBar() {
         </li>
         {token ? (
           <li className={nav ? "maintain" : "normal"}>
-            <p onClick={handleSignout}>Logout</p>
+            <p onClick={handleSignout} className="ri-user-3-fill">
+              Logout
+            </p>
           </li>
         ) : (
           <li className={nav ? "maintain" : "normal"}>
             <p
               onClick={handleSignClick}
-              className={location.pathname === "/login" ? "active" : ""}
+              className={`{
+                location.pathname === "/login" ? "active" : ""
+              }ri-user-3-fill`}
             >
               Sign In
             </p>
           </li>
         )}
+        <li>
+          <Link to="/order">
+            <img src={cart} alt="cart" />
+          </Link>
+        </li>
       </ul>
-      <div className={nav ? "head-icons" : "header-icons"}>
+      <div className={nav ? "maintain" : "normal"}>
         {/* {token ? (
           <p onClick={handleSignout}>Logout</p>
         ) : (
@@ -117,6 +129,12 @@ function NavBar() {
             className="user"
           >
             <i className="ri-user-3-fill"></i>Sign-in
+            <li>
+              <Link>
+                {" "}
+                <img src={cart} alt="cart" />
+              </Link>
+            </li>
           </p>
         )} */}
         <div className={icon} id="menu-icon" onClick={toggle}></div>

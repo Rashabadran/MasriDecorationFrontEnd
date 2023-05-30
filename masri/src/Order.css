@@ -5,9 +5,15 @@
 }
 
 .product-image{
-    width: 200px;
-        height: 337px;
-            margin-top: 19px;
+    
+  width: 100%; /* Set the width to 100% to make the image responsive */
+  height: 188px; /* Let the height adjust automatically based on the aspect ratio */
+  max-width: 200px; /* Set a maximum width to limit the size of the image */
+  max-height: 337px; /* Set a maximum height to limit the size of the image */
+  margin-top: 19px;
+
+
+           
 }
 
 .orders-div {
@@ -32,13 +38,15 @@
     align-items: center;
 }
 
+
 .order-det {
     display: flex;
     flex-direction: column;
     border: 2px solid #ccc;
     border-radius: 10px;
     width: 25%;
-    background-color: black;
+    background-color: white;
+    margin-top:12px
 }
 
 .order-img {
@@ -50,7 +58,7 @@
 .order-writing {
         
             
-            margin-bottom: 2rem;
+            /* margin-bottom: 2rem; */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -66,6 +74,7 @@
     font-size: 3rem;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     text-align: center;
+    margin-top: 6%;;
 }
 
 .del-icon {
@@ -97,7 +106,7 @@
     margin-bottom: 3rem;
     margin-top: 3rem;
     width: 30rem;
-    height: 3rem;
+    height: 6rem;
     border-radius: 1rem;
     background-color: black;
     color: white;
@@ -108,19 +117,19 @@
 .delete-icon {
     width: 30px;
     height: 30px;
-    margin-left: 370px !important;
+    /* margin-left: 3rem; */
     margin-top: 3%;
 }
 
 .desOrder {
-    color: white;
+    color: #19c5ff;
   
     
 }
 
 .order-title {
     
-    color: white;
+    color:#19c5ff;
 }
 
 .order-writing>p {
@@ -132,7 +141,7 @@
     margin-top: 3rem;
     margin-right: 3rem;
     width: 15rem;
-    height: 3rem;
+    height: 4rem;
     border-radius: 1rem;
     background-color: black;
     color: white;
@@ -175,17 +184,86 @@
   margin-bottom: 24px;
 }
 
-
-@media only screen and (min-width:769px)and(max-width:1550px){
+@media  (min-width:900px) and (max-width:1350px){
     .delete-icon {
             width: 30px;
             height: 30px;
-            margin-left: 261px !important;
-            margin-top: 3%;
+            /* margin-left: 261px ; */
+            /* margin-top: 3%; */
         }
+.orders-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+.order-det {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 31%;
+    background-color: white;
+    margin-top: 12px;
+}
+
+}
+@media   (min-width:800px) and (max-width:900px){
+    .delete-icon {
+            width: 30px;
+            height: 30px;
+            /* margin-left: 261px ; */
+            /* margin-top: 3%; */
+        }
+.orders-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.order-det {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 31%;
+    background-color: white;
+    margin-top: 12px;
+}
+.order-style {
+    width: 849px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* column-gap: 6rem; */
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+}
+
+
+.Orders-page {
+    font-size: 3rem;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    text-align: center;
+    margin-top: 17%;
+}
+}
+
+
+
 /* Media queries for mobile */
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
+    .delete-icon {
+    width: 30px;
+    height: 30px;
+    margin:0 auto;
+    /* margin-top: 3%; */
+}
     .orders-div {
         display: flex;
         flex-direction: column;
@@ -228,7 +306,7 @@
         font-size: 2rem;
         font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
         text-align: center;
-        margin: 1rem;
+        margin: 6rem;
     }
 
     .del-icon {
@@ -300,3 +378,4 @@
         margin-right: 5%;
     }
 }
+

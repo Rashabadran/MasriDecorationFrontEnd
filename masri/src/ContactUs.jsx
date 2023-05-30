@@ -117,7 +117,7 @@ const ContactUs = () => {
                   onChange={onChange}
                   required
                 />
-                <button className="form-sbmt" type="submit" onClick={onSubmit}>
+                <button className=" daily-button form-sbmt" type="submit" onClick={onSubmit}>
                   SEND
                 </button>
               </form>
