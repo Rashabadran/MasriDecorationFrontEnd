@@ -18,7 +18,7 @@ li {
 .sticky-header {
     position: fixed;
     width: 100%;
-    top: 0;
+    top: 4px;
     right: 0;
     z-index: 10;
     display: grid;
@@ -26,6 +26,8 @@ li {
     background-color: white;
     transition: all 0.2s ease;
     align-items: center;
+    font-family: sans-serif;
+    
 }
 
 .logo {
@@ -51,6 +53,9 @@ width: 12rem;
     display: flex;
     margin: 0 auto;
     justify-content: flex-end;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .nav-links li a,
@@ -62,12 +67,14 @@ width: 12rem;
     transition: all 0.3s ease;
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
-
-.nav-links li a:is(:hover, :focus, :focus-visible, :active) {
+/* .nav-links li p,
+.nav-links li a:is(:hover,  :active) {
     color: #8be2ff;
     outline: none;
-}
+} */
+
 
 .active {
     transition: all 0.3s ease;
@@ -148,53 +155,6 @@ width: 12rem;
     display: none;
 }
 
-@media all and (max-width: 1230px) {
-    .sticky-header {
-        grid-template-columns: 250px 4fr 1fr;
-    }
-
-    .not {
-        grid-template-columns: 250px 4fr 1fr;
-    }
-
-    .logo span {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-
-
-    .nav-links li p {
-        font-size: 0.8rem;
-        padding: 5px 0;
-        margin: 0px 20px;
-        color: black;
-    }
-
-    .nav-links li a {
-        font-size: 0.8rem;
-        padding: 5px 0;
-        margin: 0px 20px;
-        color: black;
-    }
-
-    .header-icons p {
-        margin-inline: 5px 10px;
-        font-size: 0.8rem;
-        font-weight: bold;
-    }
-
-    .head-icons p {
-        margin-inline: 5px 10px;
-        font-size: 0.9rem;
-        font-weight: bold;
-    }
-}
-
-.willhide,
-.willhidden {
-    display: none;
-}
-
 @media all and (max-width: 840px) {
     .sticky-header {
         display: flex;
@@ -224,7 +184,7 @@ width: 12rem;
         position: absolute;
         top: 100%;
         right: -100%;
-        width: 200px;
+        width: 61%;
         height: 29vh;
         background-color: #8be2ff;
         display: flex;

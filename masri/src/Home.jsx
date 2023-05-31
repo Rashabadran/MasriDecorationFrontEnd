@@ -1,24 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
-import NavBar from './NavBar';
-import Footer from './footer';
-import Balloons from './images/BALLOONS-removebg-preview.png';
-import slide1 from './images/birth.png';
-import slider2 from './images/baa1.jpg';
-import slider3 from './images/baa2.jpg';
+import FA from "./images/FA.jpeg"
 import b222 from './images/b222.jpg';
 import b44 from './images/b44.jpg';
-import balloon111 from './images/balloon111.jpg';
-import balloon222 from './images/balloon222.jpg';
-import balloon333 from './images/balloon333.jpg'
-import balloon3333 from './images/ballooon33333.jpg';
+import balloon111 from './images/daniel-huniewicz-nzJXQm0pDJA-unsplash.jpg';
+import balloon222 from './images/Pet2.jpg';
+import balloon3333 from './images/696250.jpg';
 import { Link,useParams } from 'react-router-dom';
 
 function Home() {
   const imagesss = [
-    { src: balloon111, alt: 'Image 1' },
-    { src: balloon3333, alt: 'Image 3' },
-    { src: balloon222, alt: 'Image 2' },
+    { src: balloon222, alt: "Image 1" },
+    { src: balloon111, alt: "Image 2" },
+
+    { src: balloon3333, alt: "Image 3" },
   ];
 
   const delay = 8000;
@@ -168,7 +163,7 @@ function Home() {
           <div className="carouselHome">
             <ul className="carousel__list">
               <li className="carousel__item" data-pos="-2">
-                <img className="imagesinCarousel" src={b222} alt="Image1" />
+                <img className="imagesinCarousel" src={FA} alt="Image1" />
               </li>
             </ul>
           </div>

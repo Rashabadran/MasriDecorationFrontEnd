@@ -4,7 +4,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import NavBar from "./NavBar";
 import ballooon from './images/balloons.png';
-
+import { Link } from "react-router-dom";
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,12 +24,15 @@ function Register() {
 
   const checkEmailExists = async (email) => {
     try {
-      const response = await axios.get("http://localhost:3030/users/all", {
-        params: {
-          email: email,
-        },
-      });
-      console.log("aa",response.data)
+      const response = await axios.get(
+        "https://masrishop.onrender.com/users/all",
+        {
+          params: {
+            email: email,
+          },
+        }
+      );
+      
       return response.data.exists;
     } catch (error) {
       console.error("Error checking email existence:", error);
@@ -43,7 +46,7 @@ function Register() {
 
     try {
       const emailExists = await checkEmailExists(email);
-      console.log("emaill",email)
+      
       if (emailExists) {
         swal({
           title: "Register failed",
@@ -62,7 +65,7 @@ function Register() {
     }
       else {
         const response = await axios.post(
-          "http://localhost:3030/users/",
+          "https://masrishop.onrender.com/users/",
           {
             name,
             email,
@@ -77,8 +80,7 @@ function Register() {
         );
 
         if (response.status === 200) {
-          console.log("register ok");
-          console.log(response);
+      
           swal({
             title: "Register successful",
             icon: "success",
@@ -143,9 +145,14 @@ function Register() {
                 className="input-register"
                 onChange={handlePasswordChange}
               />
-              <button type="submit" className="button-register">
+              <button type="submit" className=" daily-button ">
                 Register
               </button>
+               <div className="registration">
+              <p>
+                Do you have an account? <Link to="/login" className="reg">Login here</Link>
+              </p>
+              </div>
             </form>
           </div>
         </div>

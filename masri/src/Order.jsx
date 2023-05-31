@@ -113,7 +113,7 @@ localStorage.clear();
 
         });
       // event.preventDefault();
-      const response = await fetch("http://localhost:3030/orders", {
+      const response = await fetch("https://masrishop.onrender.com/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,16 +121,28 @@ localStorage.clear();
         body: body_data,
       });
 
-      console.log("body_data ", body_data);
-      console.log("response ", response.data);
+
       toast.success("your order is sent ", {
         position: toast.POSITION.TOP_RIGHT,
+        onClose: () => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000); 
+      },
+    
       });
+      
       localStorage.clear();
     //   delayedRefresh();
     } else {
       toast.error("please sign in to continue this order", {
         position: toast.POSITION.TOP_RIGHT,
+        onClose: () => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000); 
+      },
+   
       });
     }
   };
@@ -211,7 +223,7 @@ function handleProductClick(id) {
                 <p className="desOrder">Color: {item.color}</p>
                 <p className="desOrder">Quantity: {item.quantity}</p>
                 <div className="orderPrice desOrder">
-                  Price:{" "}
+                  Unit Price:{" "}
                   {item.price == item.priceAfterDiscount ? (
                     <h4 className="childPrice">{item.price}$</h4>
                   ) : (
@@ -235,7 +247,7 @@ function handleProductClick(id) {
         <form className="res-form">
           <div>
             <label htmlFor="name" className="res-label">
-              Name:
+              Address:
             </label>
             <input
               type="text"
@@ -280,7 +292,7 @@ function handleProductClick(id) {
           Place Order
         </button>
         <button
-          className=" daily-button orderalldelete  "
+          className=" daily-button  "
           onClick={() => clearLocalStorage()}
         >
           Delete Order

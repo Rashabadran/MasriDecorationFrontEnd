@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './singleBalloons.css';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Carousel = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -41,7 +42,22 @@ const SingleBalloons = () => {
   const [images, setImages] = useState([]);
   const { productId } = useParams();
   const [valueColors, setValueColors] = useState([]);
+   const [canorder, setcanorder] = useState(true);
 
+
+  function checkUserRole() {
+    const userRole = sessionStorage.getItem("role");
+    const token = sessionStorage.getItem("token");
+
+    // Get the user's role from session storage
+    if (!token || !userRole) {
+      // User has the 'user' role, so navigate to the desired page
+      localStorage.clear();
+      setcanorder(false);
+    } else {
+      setcanorder(true);
+    }
+  }
   useEffect(() => {
     loadSingleProduct();
   }, [productId]);
@@ -57,8 +73,13 @@ const SingleBalloons = () => {
   function handleColorClick(event) {
     setValueColors(event.target.value);
   }
+  useEffect(() => {
+    checkUserRole();
+   
+  }, []);
 
   const saveToLocalStorage = () => {
+    if(canorder){
     // Get the existing cart items from local storage
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -86,15 +107,28 @@ const SingleBalloons = () => {
 
     // Save the updated cart items to local storage
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  };
+    window.location.href="/order"
+  }
+  else{
+    toast.error("please sign in to continue this order", {
+        position: toast.POSITION.TOP_RIGHT,
+        onClose: () => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000); 
+      },
+   
+      });
+  }
+}
 
   const loadSingleProduct = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3030/allballoons/productbyID/${productId}`
+        `https://masrishop.onrender.com/allballoons/productbyID/${productId}`
       );
       setData(res.data);
-      console.log(data);
+      
     } catch (error) {
       console.error(error);
     }
@@ -114,6 +148,7 @@ const SingleBalloons = () => {
 
   return (
     <div className="app">
+      <ToastContainer />
       <div className="both">
         <div className="first">
           <Carousel images={carouselImages} />
@@ -121,7 +156,9 @@ const SingleBalloons = () => {
         <div className="second">
           <div className="details">
             <p className="title">{data.title}</p>
+            <br />
             <div className="price">
+              Price:
               {data.price === data.priceAfterDiscount ? (
                 <h3>{data.price}$</h3>
               ) : (
@@ -131,19 +168,26 @@ const SingleBalloons = () => {
                 </div>
               )}
             </div>
-            <p className="size">Color</p>
-            <div className="colorDetails">
-              {colors.map((color, index) => (
-                <button
-                  className="colorDetailsName"
-                  key={index}
-                  value={color}
-                  onClick={handleColorClick}
-                >
-                  {color}
-                </button>
-              ))}
-            </div>
+
+            <p className="size">
+              Color:
+              <div className="colorDetails">
+                {colors.map((color, index) => (
+                  <button
+                    className={
+                      valueColors === color
+                        ? "colorDetailsName colorDetailsNameActive"
+                        : "colorDetailsName"
+                    }
+                    key={index}
+                    value={color}
+                    onClick={handleColorClick}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </p>
             <div className="quantity-button">
               <p className="quantityText">Quantity</p>
               <p className="borderr">
@@ -169,11 +213,12 @@ const SingleBalloons = () => {
               </ul>
             </div>
             <div>
-              <Link to={`/Order`}>
-                <button className="cartButton" onClick={saveToLocalStorage}>
-                  Add to cart
-                </button>
-              </Link>
+              <button
+                className=" daily-button cartButton"
+                onClick={saveToLocalStorage}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         </div>

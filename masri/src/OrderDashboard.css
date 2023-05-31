@@ -8,6 +8,9 @@
 .orderPricedash {
     display: flex;
 }
+.sizeIm{
+    width: 50%;
+}
 
 .orderdash-style {
     width: 90%;

@@ -41,10 +41,11 @@ const [threeimages, setthreeimages] = useState([]);
 
     try {
       const response = await axios.post(
-        "http://localhost:3030/reservation/",
+        "https://masrishop.onrender.com/reservation/",
         reservationData
+       
       );
-
+         
       if (response.status === 200 || response.status === 201) {
         swal({
           title: "Reservation added successfully!",
@@ -65,6 +66,7 @@ const [threeimages, setthreeimages] = useState([]);
         text: "Something went wrong. Please try again later.",
         icon: "error",
       });
+     
     }
   };
 
@@ -91,7 +93,9 @@ const [threeimages, setthreeimages] = useState([]);
 
 const getallitems = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/decorationCat/");
+      const response = await axios.get(
+        "https://masrishop.onrender.com/decorationCat/"
+      );
      setAllImages(response.data)
       setImagess(response.data.map((item) => item.image));
       
@@ -107,8 +111,10 @@ const getallitems = async () => {
   return (
     <div>
       <div className="photo-grid">
+        
         <div>
           <div className="gallery">
+          
             <button
               type="submit"
               className="daily-button addDecoration"
@@ -125,10 +131,9 @@ const getallitems = async () => {
         </div>
 
         {showForm && (
-          <div className="res-popup">
-            <div className="res-popup-content1">
-              <h2 className="res-h2">Event Inquiry Form</h2>
-              <form className="res-form">
+          <div className="res-popupRes">
+            <div className="res-popup-contentRes">
+              <form className="res-form1">
                 <div>
                   <label htmlFor="name" className="res-label">
                     Name:
@@ -200,9 +205,7 @@ const getallitems = async () => {
                 <br />
 
                 <div className="tools">
-                  <label className="res-label-tool">
-                    Floral designs needed for the following:
-                  </label>
+                  <label className="res-label-tool">Reserve to:</label>
 
                   <div className="tools-check">
                     <div>
@@ -302,7 +305,7 @@ const getallitems = async () => {
 
                 <div>
                   <label htmlFor="message" className="details">
-                    Other: <br></br>
+                    Additional Info: <br></br>
                   </label>
                   <br></br>
                   <textarea

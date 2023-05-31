@@ -30,7 +30,7 @@ const ContactUs = () => {
         "bsgzj8RCp8iMedk0g"
       );
 
-      console.log("email sent successfully");
+    
       form.current.reset();
     } catch (error) {
       console.log("email sending failed", error);
@@ -52,7 +52,7 @@ const ContactUs = () => {
     await sendEmail(e);
 
     try {
-      await axios.post("http://localhost:3030/contactus", newContact);
+      await axios.post("https://masrishop.onrender.com/contactus", newContact);
       setmyData({
         fullName: "",
         mail: "",
@@ -117,7 +117,7 @@ const ContactUs = () => {
                   onChange={onChange}
                   required
                 />
-                <button className=" daily-button form-sbmt" type="submit" onClick={onSubmit}>
+                <button className=" daily-button " type="submit" onClick={onSubmit}>
                   SEND
                 </button>
               </form>

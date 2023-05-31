@@ -31,7 +31,7 @@ function Login() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3030/users/login",
+        "https://masrishop.onrender.com/users/login",
         {
           email,
           password,
@@ -42,7 +42,7 @@ function Login() {
           },
         }
       );
-      console.log("res", response.data.message);
+     
       if (response.data.message === "User exists.") {
         swal({
           title: "Login successful",
@@ -51,7 +51,7 @@ function Login() {
           localStorage.clear();
           sessionStorage.setItem("token", response.data.token);
           if (response.data.role === "admin") {
-            {console.log(response.data)}
+           
             sessionStorage.setItem('id', response.data._id);
             sessionStorage.setItem('token', response.data.token);
             sessionStorage.setItem('role', response.data.role);
@@ -109,13 +109,13 @@ function Login() {
                 value={password}
                 onChange={handlePasswordChange}
               />
-              <button className="button-login" type="submit">
+              <button className=" daily-button " type="submit">
                 Login
               </button>
             </form>
             <div className="registration">
               <p>
-                Don't have an account? <Link to="/register">Register here</Link>
+                Don't have an account? <Link to="/register" className="reg">Register here</Link>
               </p>
             </div>
           </div>

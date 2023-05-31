@@ -45,8 +45,8 @@ function Category() {
   const [categoryForm,setCategoryForm]=useState(false);
   const getcategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/product/");
-      {console.log(response.data)}
+      const response = await axios.get("https://masrishop.onrender.com/product/");
+      
       setCategory(response.data);
 
     } catch (error) {
@@ -69,7 +69,7 @@ function Category() {
 
   const getproductsbyid = async (id) => {
     setProducts_id(id)
-    const response = await axios.get(`http://localhost:3030/allballoons/productbyID/${id}`)
+    const response = await axios.get(`https://masrishop.onrender.com/allballoons/productbyID/${id}`)
     setproductsdata(response.data)
     setedittitle(response.data.title)
     seteditColor(response.data.color)
@@ -84,7 +84,7 @@ function Category() {
 
   const getallitems = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/allballoons/product");
+      const response = await axios.get("https://masrishop.onrender.com/allballoons/product");
       setProducts(response.data);
       setImages(response.data.map((item) => item.image[0]));
     } catch (error) {
@@ -115,7 +115,7 @@ function Category() {
     formData.append("category", selectedCategory);
 
     
-    await axios.post("http://localhost:3030/allballoons/product/", formData)
+    await axios.post("https://masrishop.onrender.com/allballoons/product/", formData)
     
      toast.success('Added successfully!', {
       position: toast.POSITION.TOP_RIGHT,
@@ -150,7 +150,7 @@ function Category() {
 
   try {
     
-    await axios.post("http://localhost:3030/product", addTitle);
+    await axios.post("https://masrishop.onrender.com/product", addTitle);
     // Handle success
     toast.success('Added successfully!', {
       position: toast.POSITION.TOP_RIGHT,
@@ -175,7 +175,7 @@ function Category() {
   const deleteCategory = async (id) => {
 
   try {
-    await axios.delete(`http://localhost:3030/product/${id}`);
+    await axios.delete(`https://masrishop.onrender.com/product/${id}`);
     toast.success('Deleted successfully!', {
       position: toast.POSITION.TOP_RIGHT,
        
@@ -198,7 +198,7 @@ function Category() {
 const deleteProduct = async (id) => {
 
   try {
-    await axios.delete(`http://localhost:3030/allballoons/product/${id}`);
+    await axios.delete(`https://masrishop.onrender.com/allballoons/product/${id}`);
     toast.success('Deleted successfully!', {
       position: toast.POSITION.TOP_RIGHT,
        
@@ -256,7 +256,7 @@ const deleteProduct = async (id) => {
       editdata.color.push(editcolor[i]);
     }
 
-    const response = await axios.put(`http://localhost:3030/allballoons/productUpdate/${Products_id}`, editdata);
+    const response = await axios.put(`https://masrishop.onrender.com/allballoons/productUpdate/${Products_id}`, editdata);
 
     toast.success('Updated successfully!', {
       position: toast.POSITION.TOP_RIGHT,

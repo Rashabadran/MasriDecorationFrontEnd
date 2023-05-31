@@ -35,7 +35,10 @@
     width: 100%;
     max-width: 20rem;
     color: #3f4b4fce;
-    border-color: #8be2ffce;
+   
+}
+.reg{
+    color: #6eb8d1ce;
 }
 
 .button-login[type="submit"] {

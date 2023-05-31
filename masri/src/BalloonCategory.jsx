@@ -15,7 +15,9 @@ function Category() {
 
   const getcategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/product/");
+      const response = await axios.get(
+        "https://masrishop.onrender.com/product/"
+      );
       setCategory(response.data);
     } catch (error) {
       console.error(error);
@@ -26,7 +28,9 @@ function Category() {
 
   const getallitems = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/allballoons/product");
+      const response = await axios.get(
+        "https://masrishop.onrender.com/allballoons/product"
+      );
       setProducts(response.data);
       setImages(response.data.map((item) => item.image[0]));
     } catch (error) {
@@ -53,7 +57,7 @@ function Category() {
     
   return (
     <div className="category-container">
-      {console.log("filtered ", filteredCategory)}
+    
 
       <div className="category-buttons">
         <button
@@ -84,7 +88,7 @@ function Category() {
         {filteredCategory.map((item, index) => {
           return (
             <div className="card" key={item._id}>
-              {console.log("items", item.image[0].url)}
+              
               <img
                 className="card-details"
                 src={item && item.image[0].url}
@@ -92,18 +96,18 @@ function Category() {
               />
               <div className="priceandTitle">
                 <div className="titlee">{item.title}</div>
-                <div className="price">
+                <div className="price2">
                   {item.price === item.priceAfterDiscount ? (
                     <h3>{item.price}$</h3>
                   ) : (
-                    <div className="price">
+                    <div className="price2">
                       <h3>{item.priceAfterDiscount}$</h3>
                       <h4>{item.price}$</h4>
                     </div>
                   )}
                 </div>
                 <div className="colors">
-                  {console.log("c", item)}
+                  
                   <p>
                     <span>Colors : </span>
                     {item.color.join(", ")}

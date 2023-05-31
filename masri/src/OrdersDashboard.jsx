@@ -20,11 +20,11 @@ function Orderdashbord() {
   const [imagee,setImage]=useState([])
   const getcategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/orders");
+      const response = await axios.get("https://masrishop.onrender.com/orders");
       setData(response.data);
       
       setImage(response.data.map((item) => item.cart[item._id].image[0]));
-      {console.log("rr",response.data)}
+      
     } catch (error) {
       console.error(error);
     }
@@ -34,14 +34,14 @@ function Orderdashbord() {
     getcategories();
     
   }, []);
-  {
-    console.log("dd", data);
-  }
+  
   
   const handleProductClick = async (id) => {
     
-    const response = await axios.delete(`http://localhost:3030/orders/${id}`);
-    // console.log(response)
+    const response = await axios.delete(
+      `https://masrishop.onrender.com/orders/${id}`
+    );
+    
     toast.success("Deleted successfully!", {
       position: toast.POSITION.TOP_RIGHT,
 
@@ -95,9 +95,8 @@ function Orderdashbord() {
                           <p>Color: {cartItem.color}</p>
                           <p>Quantity: {cartItem.quantity}</p>
                           
-                            Image:
                             <p className="imgOrder">Image:</p>
-                            <img src={cartItem.productID.image[0]?.url} />
+                            <img className="sizeIm" src={cartItem.productID.image[0]?.url} />
                           
                         </li>
                       ))}

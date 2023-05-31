@@ -13,7 +13,7 @@ function Reservations() {
   const getreservations = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3030/reservation"
+        "https://masrishop.onrender.com/reservation"
       );
       setReservation(response.data);
     } catch (error) {
@@ -43,7 +43,7 @@ function Reservations() {
       dangerMode: true,
     }).then(async (willDelete) => {
       if (willDelete) {
-        await axios.delete(`http://localhost:3030/reservation/${id}`);
+        await axios.delete(`https://masrishop.onrender.com/reservation/${id}`);
         getreservations();
         swal("Poof! The reservation has been deleted!", {
           icon: "success",

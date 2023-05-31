@@ -137,7 +137,9 @@ function NavBar() {
             </li>
           </p>
         )} */}
-        <div className={icon} id="menu-icon" onClick={toggle}></div>
+        <div className={icon} id="menu-icon" onClick={toggle}>
+          
+        </div>
       </div>
     </header>
   );

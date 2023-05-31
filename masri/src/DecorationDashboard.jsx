@@ -30,7 +30,9 @@ const handleImageChange = async (event) => {
   };
 const getallitems = async () => {
     try {
-      const response = await axios.get("http://localhost:3030/decorationCat/");
+      const response = await axios.get(
+        "https://masrishop.onrender.com/decorationCat/"
+      );
      setAllImages(response.data)
      
       
@@ -51,7 +53,7 @@ const getallitems = async () => {
     formData.append("image", image);
     
     
-    await axios.post("http://localhost:3030/decorationCat/", formData)
+    await axios.post("https://masrishop.onrender.com/decorationCat/", formData);
      toast.success('Added successfully!', {
       position: toast.POSITION.TOP_RIGHT,
        
@@ -76,7 +78,7 @@ const getallitems = async () => {
    const deleteCategory = async (id) => {
    
   try {
-    await axios.delete(`http://localhost:3030/decorationCat/${id}`);
+    await axios.delete(`https://masrishop.onrender.com/decorationCat/${id}`);
     toast.success('Deleted successfully!', {
       position: toast.POSITION.TOP_RIGHT,
        
@@ -138,8 +140,7 @@ const getallitems = async () => {
           allImages.map((photo, index) => (
             <div key={index} className="gallery-item2">
               <img src={allImages[index]?.image?.url} alt={photo.alt} />
-              {console.log("mm", allImages)}
-              {console.log("image", image)}
+              
 
               <img
                 src={trash}
