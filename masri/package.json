@@ -13,6 +13,7 @@
     "better-react-carousel": "^1.1.1",
     "carousel-react-rcdev": "^0.0.5",
     "emailjs-com": "^3.2.0",
+    "fortawesome": "^0.0.1-security",
     "react": "^18.2.0",
     "react-datepicker": "^4.12.0",
     "react-dom": "^18.2.0",
