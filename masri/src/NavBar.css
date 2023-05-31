@@ -155,7 +155,7 @@ width: 12rem;
     display: none;
 }
 
-@media all and (max-width: 840px) {
+@media all and (max-width: 1250px) {
     .sticky-header {
         display: flex;
         justify-content: space-between;
