@@ -7,9 +7,6 @@
   pointer-events: none;
 }
 
-.App{
-  margin-top: 6%;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

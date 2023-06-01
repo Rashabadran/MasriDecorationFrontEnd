@@ -15,6 +15,13 @@
 
            
 }
+.price h4{
+    text-decoration: line-through;
+        text-decoration: line-through;
+    padding-left: 26px;
+    color: grey;
+
+}
 
 .orders-div {
     display: flex;

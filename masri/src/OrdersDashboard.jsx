@@ -91,7 +91,8 @@ function Orderdashbord() {
                     <ul>
                       {item.cart.map((cartItem) => (
                         <li key={cartItem._id}>
-                          <p>Title: {cartItem.title}</p>
+                        {console.log(cartItem)}
+                          <p>Title: {cartItem.productID.title}</p>
                           <p>Color: {cartItem.color}</p>
                           <p>Quantity: {cartItem.quantity}</p>
                           

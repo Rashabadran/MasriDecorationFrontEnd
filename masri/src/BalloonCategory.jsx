@@ -3,7 +3,7 @@ import axios from 'axios';
 import './BalloonCategory.css';
 import NavBar from "./NavBar";
 import { useParams,Link } from 'react-router-dom';
-
+import Loader from "./Loader/loader";
 function Category() {
   const [category, setCategory] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
@@ -54,6 +54,14 @@ function Category() {
     ? products
     : products.filter((item) => item.category._id === selectedCategoryId);
 
+
+    if (!products) {
+      return (
+        <>
+          <Loader />
+        </>
+      );
+    }
     
   return (
     <div className="category-container">

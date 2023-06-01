@@ -9,7 +9,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Loader from './Loader/loader';
 import { Gallery } from "react-grid-gallery";
 
 const Decoration = () => {
@@ -107,6 +107,14 @@ const getallitems = async () => {
   useEffect(() => {
     getallitems();
   }, []);
+
+  if (!allImages) {
+    return (
+      <>
+        <Loader />
+      </>
+    );
+  }
 
   return (
     <div>

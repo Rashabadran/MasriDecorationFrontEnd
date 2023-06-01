@@ -87,7 +87,7 @@ function NavBar() {
             href="/contactus"
             className={location.pathname === "/contactus" ? "active" : ""}
           >
-            Contact us
+            ContactUs
           </a>
         </li>
         {token ? (

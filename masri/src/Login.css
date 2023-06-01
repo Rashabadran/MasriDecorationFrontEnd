@@ -89,7 +89,7 @@
     .input-login,
     .input-login {
         font-size: 1rem;
-        max-width: 15rem;
+        max-width: 92%;
     }
 
     .button-login[type="submit"] {
@@ -103,7 +103,7 @@
 
     .border-reg1 {
         width: 145px;
-        height: 274px;
+        height: 57%;
         padding-top: 10px;
     }
 
@@ -112,9 +112,9 @@
         justify-content: space-around;
 
     }
-        .registration {
+        /* .registration {
             visibility: hidden;
-        }
+        } */
 
 }
 
@@ -126,7 +126,7 @@
     .input-login,
     .input-login {
         font-size: 1rem;
-        max-width: 15rem;
+        max-width: 92%;
     }
 
     .button-login[type="submit"] {
