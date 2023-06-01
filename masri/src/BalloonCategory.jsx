@@ -7,7 +7,7 @@ import Loader from "./Loader/loader";
 function Category() {
   const [category, setCategory] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
   const [images, setImages] = useState([]);
   const [productByCat, setProductbyCat] = useState("");
   const [isAllProductsSelected, setIsAllProductsSelected] = useState(true);

@@ -21,7 +21,7 @@
 .l-container p {
   font-size: 20px;
   font-weight: bold;
-  color: orange;
+  color: #61dafb;
   text-align: center;
 }
 .loader{
@@ -39,7 +39,7 @@
   left: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to top, transparent,rgb(255 186 0 / 68%));
+  background: linear-gradient(to top, transparent,rgb(black / 68%));
   background-size: 100px 100px;
   background-repeat: no-repeat;
   border-top-left-radius: 100px;
@@ -54,16 +54,16 @@
     transform: translateX(-50%);
     width: 10px;
     height: 10px;
-    background-color: #ffb23e;
+    background-color: #61dafb;
     border-radius: 50%;
     z-index: 10;
-    box-shadow: 0 0 10px #ff8800,
-                0 0 20px #ff8800, 
-                0 0 0px #ff8800, 
-                0 0 0px #ff8800, 
-                0 0 10px #ff8800, 
-                0 0 10px #ff8800, 
-                0 0 10px #ff8800;
+    box-shadow: 0 0 10px #61dafb,
+                0 0 20px #61dafb, 
+                0 0 0px #61dafb, 
+                0 0 0px #61dafb, 
+                0 0 10px #61dafb, 
+                0 0 10px #61dafb, 
+                0 0 10px #61dafb;
 }
 
 

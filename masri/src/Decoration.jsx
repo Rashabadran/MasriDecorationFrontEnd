@@ -16,7 +16,7 @@ const Decoration = () => {
 
 const [threeimages, setthreeimages] = useState([]);
   const [getimages,setImagess]=useState([])
-  const [allImages,setAllImages]=useState([])
+  const [allImages,setAllImages]=useState(null)
   const [showAddForm, setShowAddForm] = useState(false);
   const [name, setName] = useState("");
   const [phone_number, setPhone_nb] = useState("");
