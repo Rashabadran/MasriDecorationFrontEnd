@@ -7,6 +7,10 @@
     height: 90.5vh;
 }
 
+.swal-modal {
+width:30%;
+}
+
 .login-h1 {
     font-size: 3rem;
     margin-bottom: 2rem;

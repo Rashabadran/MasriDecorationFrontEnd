@@ -94,6 +94,7 @@ function NavBar() {
           <li className={nav ? "maintain" : "normal"}>
             <p onClick={handleSignout} className="ri-user-3-fill">
               Logout
+             
             </p>
           </li>
         ) : (
@@ -108,11 +109,16 @@ function NavBar() {
             </p>
           </li>
         )}
+        {token?(
         <li>
           <Link to="/order">
             <img src={cart} alt="cart" />
           </Link>
         </li>
+        ):(
+          null
+        )}
+
       </ul>
       <div className={nav ? "maintain" : "normal"}>
         {/* {token ? (
@@ -137,9 +143,7 @@ function NavBar() {
             </li>
           </p>
         )} */}
-        <div className={icon} id="menu-icon" onClick={toggle}>
-          
-        </div>
+        <div className={icon} id="menu-icon" onClick={toggle}></div>
       </div>
     </header>
   );
