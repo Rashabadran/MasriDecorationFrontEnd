@@ -362,7 +362,7 @@ const deleteProduct = async (id) => {
                 {item.cattitle}
               
                 <img
-                  className="basketImage "
+                  className="basketImage"
                   src={baskett}
                   onClick={() => {
                     deleteCategory(item._id);
