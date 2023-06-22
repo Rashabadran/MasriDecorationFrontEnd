@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
-import FA from "./images/FA.jpeg"
-import b222 from './images/b222.jpg';
-import b44 from './images/b44.jpg';
-import balloon111 from './images/daniel-huniewicz-nzJXQm0pDJA-unsplash.jpg';
-import balloon222 from './images/Pet2.jpg';
-import balloon3333 from './images/696250.jpg';
+import FA from "../images/FA.jpeg";
+import b222 from '../images/b222.jpg';
+import b44 from '../images/b44.jpg';
+import balloon111 from '../images/daniel-huniewicz-nzJXQm0pDJA-unsplash.jpg';
+import balloon222 from '../images/Pet2.jpg';
+import balloon3333 from '../images/696250.jpg';
 import { Link,useParams } from 'react-router-dom';
 
 function Home() {

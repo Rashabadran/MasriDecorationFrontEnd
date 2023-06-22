@@ -1,19 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import Register from "./Register";
-import BalloonsCategory from "./BalloonCategory";
-import SingleBalloons from "./singleBalloons";
+import Home from "./User/Home";
+import Login from "./User/Login";
+import Register from "./User/Register";
+import BalloonsCategory from "./User/BalloonCategory";
+import SingleBalloons from "./User/singleBalloons";
 import Layout from "./layout";
-import Decoration from "./Decoration";
-import ProductDashboard from "./productDashboard";
-import DecorationDashboard from "./DecorationDashboard";
-import Order from "./Order";
-import ContactUs from "./ContactUs";
-import Orderdashbord from "./OrdersDashboard";
-import Reservations from "./reservationDashboard";
+import Decoration from "./User/Decoration";
+import ProductDashboard from "./Dashboard/productDashboard";
+import DecorationDashboard from "./Dashboard/DecorationDashboard";
+import Order from "./User/Order";
+import ContactUs from "./User/ContactUs";
+import Orderdashbord from "./Dashboard/OrdersDashboard.jsx";
+import Reservations from "./Dashboard/reservationDashboard";
 import LayoutDash from "./layoutDash";
 function App() {
   return (

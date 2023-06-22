@@ -1,15 +1,10 @@
 import React, { useEffect,useState } from 'react';
-import Image1 from './images/a1.png';
-import Image2 from './images/a11.jpg';
-import Image3 from './images/a11.jpg';
-import Image4 from './images/a11.jpg';
-import Image5 from './images/a11.jpg';
 import './Decoration.css'
 import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Loader from './Loader/loader';
+import Loader from '../Loader/loader';
 import { Gallery } from "react-grid-gallery";
 
 const Decoration = () => {

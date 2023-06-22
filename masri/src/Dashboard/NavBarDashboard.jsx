@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import "./NavBar.css";
+import { useParams } from "react-router-dom";
+import "../User/NavBar.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import logo from "../src/images/logoo.png";
-import cart from "./images/carts.png";
+import logo from "../images/logoo.png";
 
-
-function NavBar() {
+function NavBarDash() {
   let navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [nav, setNav] = useState(false);
@@ -15,7 +13,6 @@ function NavBar() {
   const [icon, setIcon] = useState("bx bx-menu");
   const location = useLocation();
   const token = sessionStorage.getItem("token");
-
   useEffect(() => {
     setShow(false);
     setMenu("nav-links");
@@ -52,7 +49,6 @@ function NavBar() {
     navigate("/login");
   };
 
-  
   window.addEventListener("scroll", navbar);
 
   return (
@@ -62,66 +58,57 @@ function NavBar() {
       </a>
       <ul className={menu}>
         <li className={nav ? "maintain" : "normal"}>
-          <a href="/" className={location.pathname === "/" ? "active" : ""}>
-            Home
-          </a>
-        </li>
-        <li className={nav ? "maintain" : "normal"}>
           <a
-            href="/balloons"
-            className={location.pathname === "/balloons" ? "active" : ""}
+            href="/productDashboard"
+            className={
+              location.pathname === "/productDashboard" ? "active" : ""
+            }
           >
-            Shop
+            Products
           </a>
         </li>
         <li className={nav ? "maintain" : "normal"}>
           <a
-            href="/decoration"
-            className={location.pathname === "/decoration" ? "active" : ""}
+            href="/decorationDashboard"
+            className={
+              location.pathname === "/decorationDashboard" ? "active" : ""
+            }
           >
             Decoration
           </a>
         </li>
         <li className={nav ? "maintain" : "normal"}>
           <a
-            href="/contactus"
-            className={location.pathname === "/contactus" ? "active" : ""}
+            href="/OrderDashboard"
+            className={location.pathname === "/OrderDashboard" ? "active" : ""}
           >
-            ContactUs
+            Orders
           </a>
         </li>
-        {token ? (
-          <li className={nav ? "maintain" : "normal"}>
-            <p onClick={handleSignout} className="ri-user-3-fill">
-              Logout
-             
-            </p>
-          </li>
-        ) : (
-          <li className={nav ? "maintain" : "normal"}>
-            <p
-              onClick={handleSignClick}
-              className={`{
-                location.pathname === "/login" ? "active" : ""
-              }ri-user-3-fill`}
-            >
-              Sign In
-            </p>
-          </li>
-        )}
-        {token?(
-        <li>
-          <Link to="/order">
-            <img src={cart} alt="cart" />
-          </Link>
+        {/* <li className={nav ? 'maintain' : 'normal'}>
+          <a href="/discounts" className={location.pathname === '/discounts' ? 'active' : ''}>
+            Discounts
+          </a>
+        </li> */}
+        <li className={nav ? "maintain" : "normal"}>
+          <a
+            href="/reservationDashboard"
+            className={
+              location.pathname === "/reservationDashboard" ? "active" : ""
+            }
+          >
+            Reservations
+          </a>
         </li>
-        ):(
-          null
-        )}
-
+        <li className="willhide">
+          <p
+            onClick={handleSignClick}
+            className={location.pathname === "/sign-in" ? "active" : ""}
+          ></p>
+        </li>
       </ul>
-      <div className={nav ? "maintain" : "normal"}>
-        {/* {token ? (
+      <div className={nav ? "head-icons" : "header-icons"}>
+        {token ? (
           <p onClick={handleSignout}>Logout</p>
         ) : (
           <p
@@ -134,19 +121,14 @@ function NavBar() {
             tabIndex="0"
             className="user"
           >
-            <i className="ri-user-3-fill"></i>Sign-in
-            <li>
-              <Link>
-                {" "}
-                <img src={cart} alt="cart" />
-              </Link>
-            </li>
+            <i class="ri-user-3-fill"></i>Sign-in
           </p>
-        )} */}
+        )}
+
         <div className={icon} id="menu-icon" onClick={toggle}></div>
       </div>
     </header>
   );
 }
 
-export default NavBar;
+export default NavBarDash;

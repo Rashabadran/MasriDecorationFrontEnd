@@ -1,10 +1,8 @@
 import "./OrderDashboard.css";
-
-
 import React, { useCallback, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import del from './images/trash2.png';
+import del from '../images/trash2.png';
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer, useToastContainer } from "react-toastify";

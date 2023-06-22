@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useReducer } from "react";
 import axios from "axios";
 import "./reservationDashboard.css";
 import swal from "sweetalert";
-import trash2 from './images/trash2.png'
+import trash2 from '../images/trash2.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

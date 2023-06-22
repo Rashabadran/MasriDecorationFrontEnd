@@ -1,18 +1,11 @@
 import React, { useEffect } from 'react';
-import Image1 from './images/a1.png';
-import Image2 from './images/a11.jpg';
-import Image3 from './images/a11.jpg';
-import Image4 from './images/a11.jpg';
-import Image5 from './images/a11.jpg';
 import './DecorationDashboard.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import trash from './images/trash2.png';
+import trash from '../images/trash2.png';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
-import { Gallery } from "react-grid-gallery";
 import { useState } from 'react';
-import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 const DecorationDashboard = () => {
 

@@ -3,7 +3,7 @@ import "./Register.css";
 import axios from "axios";
 import swal from "sweetalert";
 import NavBar from "./NavBar";
-import ballooon from './images/balloons.png';
+import ballooon from '../images/balloons.png';
 import { Link } from "react-router-dom";
 function Register() {
   const [name, setName] = useState("");

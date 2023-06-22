@@ -4,7 +4,7 @@ import "./Login.css";
 import { useState } from "react";
 import swal from "sweetalert";
 import axios from "axios";
-import ballooon from './images/balloons.png';
+import ballooon from '../images/balloons.png';
 import NavBar from "./NavBar";
 
 function Login() {

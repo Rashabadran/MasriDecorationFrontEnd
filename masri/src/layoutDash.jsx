@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './NavBarDashboard'
-import Footer from './footerDashboard';
+import Navbar from './Dashboard/NavBarDashboard'
+import Footer from './Dashboard/footerDashboard';
 import { Outlet, useLocation } from 'react-router';
 const LayoutDash = () => {
   let location=useLocation()

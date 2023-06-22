@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import './BalloonCategory.css';
+import '../User/BalloonCategory';
 import './productDashboard.css'
-import NavBar from "./NavBar";
 import { useParams,Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import baskett from './images/xx.png'
-import trash from './images/trash2.png'
-import pencil from './images/edit.png'
-import plus from './images/plus2.png'
+import baskett from '../images/xx.png'
+import trash from '../images/trash2.png'
+import pencil from '../images/edit.png'
+import plus from '../images/plus2.png'
 import { useNavigate } from "react-router-dom";
 function Category() {
   const [category, setCategory] = useState([]);

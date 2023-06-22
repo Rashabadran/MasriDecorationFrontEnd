@@ -3,7 +3,7 @@ import swal from "sweetalert";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './Order.css'
-import trash from './images/trash2.png'
+import trash from '../images/trash2.png'
 function Order() {
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cartItems")) || []
